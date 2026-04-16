@@ -2,24 +2,83 @@
 
 ## App Overview
 
-Design a modern, gamified **web application for learning Vietnamese**, targeting adult international learners (English-speaking). The visual style should be **clean, friendly, and motivating** — inspired by Duolingo but with a more mature, premium feel. Use a warm color palette anchored in Vietnamese cultural colors: deep red (`#C0392B`), golden yellow (`#F39C12`), with white backgrounds and soft neutral grays.
+Design a modern, gamified **web application for learning Vietnamese**, targeting adult international learners (English-speaking). The visual style should be **clean, funny, delight, friendly, and motivating** — inspired by Duolingo but with a more funny, relaxing feeling. Use a warm color palette anchored in Vietnamese cultural colors: `#FF7A2F`, ` #00D4FF` and `#FFD600`, with white backgrounds and soft neutral grays.
 
-**Typography:** Rounded sans-serif (e.g. Nunito or Poppins). Large, legible font sizes for lesson content.
+**Typography:** e.g. Plus Jarkatar Sans and Inter. Large, legible font sizes for lesson content. Typography scale: 14/16/18/24/32/40. Weights=100, 200, 300, 400, 500, 600, 700, 800, 900. Spacing scale: 4/8/12/16/24/32
 **Component style:** Rounded corners (12–16px radius), subtle drop shadows, colorful iconography, smooth micro-interactions.
+
+
+---
+
+## Component Families
+
+- buttons
+- inputs
+- forms
+- selects/comboboxes
+- checkboxes/radios/switches
+- textareas
+- date/time pickers
+- file uploaders
+- cards
+- tables
+- data lists
+- data grids
+- charts
+- stats/metrics
+- badges/chips
+- avatars
+- breadcrumbs
+- pagination
+- steppers
+- modals
+- drawers/sheets
+- tooltips
+- popovers/menus
+- navigation
+- sidebars
+- top bars/headers
+- command palette
+- tabs
+- accordions
+- carousels
+- progress indicators
+- skeletons
+- alerts/toasts
+- notifications center
+- search
+- empty states
+- onboarding
+- authentication screens
+- settings pages
+- documentation layouts
+- feedback components
+- pricing blocks
+- data visualization wrappers
+
+---
+
+## Component Rule Expectations
+
+- Define required states: default, hover, focus-visible, active, disabled, loading, error (as relevant).
+- Describe interaction behavior for keyboard, pointer, and touch.
+- State spacing, typography, and color-token usage explicitly.
+- Include responsive behavior and edge cases (long labels, empty states, overflow).
 
 ---
 
 ## Design System Tokens
 
-- **Primary:** `#C0392B` (Vietnamese Red)
-- **Secondary:** `#F39C12` (Golden Yellow)
-- **Accent:** `#27AE60` (Success Green)
-- **Background:** `#FAFAFA`
-- **Surface:** `#FFFFFF`
+- **Primary:** `#FF7A2F` (Vietnamese Red) #FF7A2F (orange)
+- **Secondary:** `#00D4FF` (Golden Yellow)
+- **Tertiary:** `#FFD600`
+- **Accent:** `#27AE60` (Success Green) 
+- **Background:** `#F8F6F1`
+- **Surface:** `#f9f7f2`
 - **Text Primary:** `#1A1A2E`
 - **Text Secondary:** `#6B7280`
 - **Border:** `#E5E7EB`
-- **XP / Gamification:** `#8B5CF6` (Purple)
+- **XP / Gamification:** `#A14100` (Brown)
 
 ---
 
@@ -29,7 +88,7 @@ Design a modern, gamified **web application for learning Vietnamese**, targeting
 
 ### PAGE 1: Landing Page (`/`)
 
-**Layout:** Full-width, single scroll page.
+**Layout:** Frame: MacBook Air, Full-width, single scroll page.
 
 **Sections:**
 
