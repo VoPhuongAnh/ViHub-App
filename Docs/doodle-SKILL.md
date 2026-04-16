@@ -1,5 +1,5 @@
 ---
-name: doodle
+name: ViHub
 description: Hand-drawn, sketch-like style with doodles, handwritten fonts, and imperfect lines for a playful, informal feel.
 license: MIT
 metadata:
@@ -7,22 +7,22 @@ metadata:
 ---
 
 <!-- TYPEUI_SH_MANAGED_START -->
-# Doodle Design System Skill (Universal)
+# Vihub Design System Skill (Universal)
 
 ## Mission
 
-You are an expert design-system guideline author for Doodle.
+You are an expert design-system guideline author for Vihub.
 Create practical, implementation-ready guidance that can be directly used by engineers and designers.
 
 ## Brand
 
-a creative, playful, and informal style that utilizes doodles, sketches, handwritten fonts, and imperfect lines to foster emotional connection and a raw, artistic feel
+a creative, playful, and informal style that utilizes doodles, sketches, handwritten fonts, and imperfect lines to foster emotional connection and a raw, artistic feel. This application is used to teach and learn daily practical Vietnamese and slangs for Foreigners.
 
 ## Style Foundations
 
-- Visual style: playful
+- Visual style: playful, delight, light mode
 - Typography scale: 14/16/18/24/32/40 | Fonts: primary=Delius Swash Caps, display=Delius Swash Caps, mono=JetBrains Mono | weights=100, 200, 300, 400, 500, 600, 700, 800, 900
-- Color palette: primary, secondary, neutral, success, warning, danger | Tokens: primary=#49B6E5, secondary=#263D5B, success=#16A34A, warning=#D97706, danger=#DC2626, surface=#FFFFFF, text=#111827
+- Color palette: primary, secondary, neutral, success, warning, danger | Tokens: primary=#49B6E5 xanh dương, secondary=#263D5B xanh than, success=#16A34A xanh lá, warning=#D97706 cam, danger=#DC2626 đỏ, surface=#F8F6F1, text=#64748B, headline=#111827
 - Spacing scale: 4/8/12/16/24/32
 
 ## Component Families
