@@ -4,10 +4,10 @@
 This design system is built on a foundation of high-energy chromatic expression and soft, approachable geometry. It balances a striking "vibrant" color profile with professional typography to create an interface that feels both cutting-edge and user-friendly.
  
 ## Color Philosophy
-- **Primary Core**: The primary orange (#FF7A2F) serves as the main driver for calls-to-action and brand identity, offering high visibility and heat.
-- **Support Palette**: Electric cyan (#00D4FF) and bright yellow (#FFD600) provide high-contrast accents for secondary interactions and decorative elements.
-- **Surface & Background**: A warm neutral (#F9F7F2) provides a soft, organic canvas that prevents the vibrant accent colors from causing visual fatigue.
-- Color palette: primary, secondary, neutral, success, warning, danger | Tokens: primary=#FF7A2F , secondary=#00D4FF , tertiary=##FFD600, success=#16A34A xanh lá, warning=#D97706 cam, danger=#DC2626 đỏ, surface=#F8F6F1, text=#64748B, headline=#111827
+- **Primary Core**: The primary orange (`#FF7A2F`) serves as the main driver for calls-to-action and brand identity, offering high visibility and heat.
+- **Support Palette**: Electric cyan (`#00D4FF`) and bright yellow (`#FFD600`) provide high-contrast accents for secondary interactions and decorative elements.
+- **Surface & Background**: A warm neutral (`#F9F7F2`) provides a soft, organic canvas that prevents the vibrant accent colors from causing visual fatigue.
+- Color palette: primary, secondary, neutral, success, warning, danger | Tokens: primary=`#FF7A2F` , secondary=`#00D4FF` , tertiary=`#FFD600`, success=`#16A34A` (xanh lá), warning=`#D97706` (cam), danger=`#DC2626` đỏ, surface=`#F8F6F1`, text=`#64748B`(dark grey), headline=`#111827` (black)
    
 ## Typography
 - **Headlines**: Plus Jakarta Sans is utilized for its modern, geometric clarity and professional character.
