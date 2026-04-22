@@ -1,0 +1,563 @@
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5/800.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5/900.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/400.css">
+<style>
+:root{--p:#FF7A2F;--s:#00D4FF;--y:#FFD600;--ok:#16A34A;--bg:#F8F6F1;--ink:#111827;--mu:#64748B;--bd:2.5px solid #111827;--sh:4px 4px 0 #111827;--sh2:6px 6px 0 #111827}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter','system-ui',sans-serif;background:var(--bg);color:var(--ink)}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans','system-ui',sans-serif;line-height:1.1}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+.mono{font-family:'JetBrains Mono',monospace}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes sp{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes si{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fi{animation:si .55s cubic-bezier(.4,0,.2,1) both}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.35s}.d4{animation-delay:.5s}
+
+/* NAV */
+nav{background:var(--bg);border-bottom:var(--bd);padding:14px 0}
+.nv{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:21px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo-chip{background:var(--p);color:#fff;border:2.5px solid var(--ink);border-radius:10px;padding:2px 11px;font-size:19px;line-height:1.4;box-shadow:var(--sh)}
+.nl{display:flex;gap:28px;list-style:none}
+.nl a{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;color:var(--mu);text-decoration:none;transition:color .15s}
+.nl a:hover{color:var(--p)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;border-radius:999px;border:var(--bd);cursor:pointer;transition:transform .1s,box-shadow .1s;text-decoration:none;line-height:1}
+.btn:hover{transform:translate(-2px,-2px)}
+.btn:active{transform:translate(2px,2px);box-shadow:none!important}
+.bp{background:var(--p);color:#fff;box-shadow:var(--sh)}
+.bp:hover{box-shadow:var(--sh2)}
+.bo{background:transparent;color:var(--ink);box-shadow:var(--sh)}
+.bo:hover{box-shadow:var(--sh2)}
+.bs{background:var(--s);color:var(--ink);box-shadow:var(--sh)}
+.by{background:var(--y);color:var(--ink);box-shadow:var(--sh)}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--y);border:var(--bd);border-radius:999px;padding:6px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;box-shadow:var(--sh)}
+
+/* HERO */
+.hero{padding:72px 0 56px;position:relative;overflow:hidden}
+.hero-g{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero-title{font-size:clamp(44px,6.5vw,80px);font-weight:900;letter-spacing:-2px;margin:20px 0 18px}
+.hl1{display:block;color:var(--ink)}
+.hl2{display:block;color:var(--p)}
+.hero-sub{font-size:17px;line-height:1.65;color:var(--mu);max-width:460px;margin-bottom:32px}
+.wave{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--p);text-underline-offset:5px;text-decoration-thickness:2.5px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+.tones-row{display:flex;gap:10px;flex-wrap:wrap}
+.tc{display:flex;flex-direction:column;align-items:center;gap:2px;background:#fff;border:var(--bd);border-radius:12px;padding:8px 13px;box-shadow:var(--sh);cursor:default;transition:transform .15s,box-shadow .15s}
+.tc:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.tc-char{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:22px;color:var(--p)}
+.tc-lbl{font-size:10px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.5px}
+
+/* HERO VISUAL */
+.hv{position:relative;display:flex;justify-content:center;align-items:center}
+.char-wrap{position:relative;display:inline-block}
+.bubble{position:absolute;top:18px;right:-36px;background:#fff;border:var(--bd);border-radius:20px 20px 20px 0px;padding:11px 18px;box-shadow:var(--sh);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:17px;white-space:nowrap;animation:fl 3s ease-in-out infinite}
+.xp-flt{position:absolute;bottom:50px;right:-28px;background:var(--y);border:var(--bd);border-radius:14px;padding:9px 14px;box-shadow:var(--sh);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;animation:fl 3.5s ease-in-out infinite .5s;white-space:nowrap}
+.str-flt{position:absolute;top:44%;left:-42px;background:var(--p);border:var(--bd);border-radius:14px;padding:9px 14px;box-shadow:var(--sh);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;color:#fff;animation:fl 4s ease-in-out infinite 1s;white-space:nowrap}
+.word-flt{position:absolute;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;border:var(--bd);border-radius:9px;padding:5px 11px;box-shadow:3px 3px 0 #111827;font-size:13px;pointer-events:none}
+
+/* STATS */
+.stats{background:var(--p);border-top:var(--bd);border-bottom:var(--bd);padding:22px 0}
+.stats-row{display:flex;gap:0;justify-content:center;align-items:center;flex-wrap:wrap}
+.st{display:flex;flex-direction:column;align-items:center;padding:0 40px}
+.st-n{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:34px;color:#fff;line-height:1}
+.st-l{font-size:12px;font-weight:600;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.st-div{width:1.5px;height:44px;background:rgba(255,255,255,.3);flex-shrink:0}
+
+/* FEATURES */
+.feat{padding:88px 0}
+.sh{text-align:center;margin-bottom:60px}
+.ey{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--p);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+.feat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.fcard{background:#fff;border:var(--bd);border-radius:24px;padding:30px;box-shadow:var(--sh);transition:transform .2s,box-shadow .2s;position:relative}
+.fcard:hover{transform:translate(-3px,-3px);box-shadow:var(--sh2)}
+.fcard:nth-child(2){transform:rotate(.6deg)}
+.fcard:nth-child(2):hover{transform:rotate(.6deg) translate(-3px,-3px)}
+.fcard:nth-child(3){transform:rotate(-.6deg)}
+.fcard:nth-child(3):hover{transform:rotate(-.6deg) translate(-3px,-3px)}
+.ficon{width:54px;height:54px;border:var(--bd);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px;box-shadow:3px 3px 0 #111827}
+.ftag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--p);background:#FFF0E8;border-radius:6px;padding:3px 8px;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px}
+.ftag.c2{color:#0090B0;background:#E0F8FF}
+
+/* FLASHCARD SECTION */
+.flsec{padding:88px 0;background:var(--s);border-top:var(--bd);border-bottom:var(--bd)}
+.fl-g{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.persp{perspective:1200px;cursor:pointer;max-width:380px;margin:0 auto}
+.fc-inner{width:100%;height:250px;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.fc-inner.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border:var(--bd);border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;box-shadow:var(--sh2)}
+.front{background:#fff}
+.back{background:var(--y);transform:rotateY(180deg)}
+.fw{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:50px;color:var(--p);letter-spacing:-1px;margin-bottom:6px}
+.fm{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:34px;color:var(--ink);margin-bottom:4px}
+.fp{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--mu)}
+.fhint{font-size:13px;color:var(--mu);font-weight:500}
+.dots{display:flex;gap:8px;justify-content:center;margin-top:18px}
+.dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--ink);background:#fff;transition:background .2s}
+.dot.on{background:var(--p)}
+.fc-btns{display:flex;gap:12px;justify-content:center;margin-top:18px}
+
+/* DIALOGUE */
+.dlsec{padding:88px 0}
+.dl-g{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.cw{background:#fff;border:var(--bd);border-radius:24px;box-shadow:var(--sh2);overflow:hidden}
+.ch{background:var(--ink);color:#fff;padding:14px 20px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;display:flex;align-items:center;gap:9px}
+.cst{width:8px;height:8px;background:var(--ok);border-radius:50%;flex-shrink:0}
+.cb{padding:22px;display:flex;flex-direction:column;gap:14px}
+.cm{display:flex;gap:9px;align-items:flex-end}
+.cm.r{flex-direction:row-reverse}
+.av{width:34px;height:34px;border-radius:50%;border:2px solid var(--ink);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px;background:var(--bg)}
+.bbl{max-width:200px;padding:10px 14px;border:2px solid var(--ink);border-radius:16px;font-size:14px;font-weight:500;line-height:1.4}
+.bv{background:var(--p);color:#fff;border-radius:16px 16px 4px 16px}
+.bu{background:var(--y);border-radius:16px 16px 16px 4px}
+.bsub{font-size:11px;color:var(--mu);margin-top:3px}
+.cf{padding:14px 18px;border-top:var(--bd);display:flex;gap:10px}
+.ci{flex:1;border:var(--bd);border-radius:999px;padding:9px 15px;font-family:'Inter',sans-serif;font-size:13px;background:var(--bg);outline:none}
+.dcard{background:#fff;border:var(--bd);border-radius:20px;padding:18px 20px;box-shadow:3px 3px 0 #111827;display:flex;gap:14px;align-items:center;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.dcard:hover{transform:translate(-2px,-2px);box-shadow:var(--sh)}
+
+/* XP BAR */
+.xpbar-wrap{background:#e5e7eb;border:var(--bd);border-radius:999px;height:18px;overflow:hidden;margin:7px 0}
+.xpbar{height:100%;background:var(--p);border-radius:999px}
+
+/* CTA */
+.cta-sec{padding:88px 0;background:var(--y);border-top:var(--bd);text-align:center;position:relative;overflow:hidden}
+.cta-title{font-size:clamp(40px,6vw,68px);font-weight:900;letter-spacing:-2px;margin-bottom:14px}
+.spin-star{display:inline-block;animation:sp 8s linear infinite;font-size:28px}
+
+/* FOOTER */
+footer{background:var(--ink);color:#fff;padding:36px 0;border-top:var(--bd)}
+.fi-row{display:flex;justify-content:space-between;align-items:center}
+.fl-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:20px}
+
+/* DOODLE BG */
+.doodlebg{background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23111827' stroke-width='1.2' opacity='.05'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpolygon points='60 5 65 16 55 16'/%3E%3Ccircle cx='68' cy='62' r='5'/%3E%3Cpath d='M5 55 L10 50 M10 50 L15 55 M10 50 L10 60'/%3E%3Cpath d='M45 35 Q52 28 59 35'/%3E%3C/g%3E%3C/svg%3E")}
+
+/* HIGHLIGHT */
+.hbox{background:var(--y);padding:2px 8px;border-radius:7px}
+
+/* responsive */
+@media(max-width:760px){
+.hero-g,.fl-g,.dl-g{grid-template-columns:1fr}
+.hv{display:none}
+.feat-g{grid-template-columns:1fr}
+.stats-row .st{padding:0 20px}
+.fi-row{flex-direction:column;gap:14px;text-align:center}
+}
+</style>
+
+<div class="doodlebg">
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nv">
+    <a href="#" class="logo fi d1">
+      <span class="logo-chip">🍜</span>XinChào
+    </a>
+    <ul class="nl fi d2">
+      <li><a href="#feat">Features</a></li>
+      <li><a href="#flash">Flashcards</a></li>
+      <li><a href="#dial">Dialogues</a></li>
+    </ul>
+    <a href="#" class="btn bp fi d2" style="font-size:14px;padding:10px 22px">Bắt Đầu →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-g">
+      <!-- LEFT -->
+      <div>
+        <div class="badge fi d1">🔥 50,000+ learners worldwide</div>
+        <h1 class="hero-title fi d2">
+          <span class="hl1">Speak Vietnamese</span>
+          <span class="hl2">Like a Local.</span>
+        </h1>
+        <p class="hero-sub fi d3">
+          No boring textbooks. No dusty grammar rules.<br>
+          Just <strong>flashcards</strong>, <strong>real dialogues</strong>, and a healthy dose of <span class="wave">chaotic fun</span>.
+        </p>
+        <div class="hero-cta fi d3">
+          <a href="#" class="btn bp" style="font-size:17px;padding:15px 32px">Start for Free 🚀</a>
+          <a href="#flash" class="btn bo" style="font-size:15px;padding:14px 26px">See how it works ↓</a>
+        </div>
+        <div class="fi d4">
+          <p style="font-size:13px;font-weight:600;color:var(--mu);margin-bottom:11px">🎵 Master all 6 Vietnamese tones:</p>
+          <div class="tones-row">
+            <div class="tc"><span class="tc-char">a</span><span class="tc-lbl">Ngang</span></div>
+            <div class="tc"><span class="tc-char">à</span><span class="tc-lbl">Huyền</span></div>
+            <div class="tc"><span class="tc-char">á</span><span class="tc-lbl">Sắc</span></div>
+            <div class="tc"><span class="tc-char">ả</span><span class="tc-lbl">Hỏi</span></div>
+            <div class="tc"><span class="tc-char">ã</span><span class="tc-lbl">Ngã</span></div>
+            <div class="tc"><span class="tc-char">ạ</span><span class="tc-lbl">Nặng</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- RIGHT: Character -->
+      <div class="hv fi d3">
+        <div class="char-wrap">
+          <div class="bubble">Xin Chào! 👋</div>
+          <!-- Manga character SVG -->
+          <svg width="320" height="400" viewBox="0 0 320 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Nón lá hat -->
+            <ellipse cx="160" cy="94" rx="88" ry="16" fill="#FFD600" stroke="#111827" stroke-width="2.5"/>
+            <polygon points="160,12 78,94 242,94" fill="#FFD600" stroke="#111827" stroke-width="2.5" stroke-linejoin="round"/>
+            <line x1="160" y1="12" x2="118" y2="94" stroke="#D97706" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="160" y1="12" x2="202" y2="94" stroke="#D97706" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <path d="M102 91 Q160 118 218 91" stroke="#111827" stroke-width="2" fill="none"/>
+            <!-- Head -->
+            <ellipse cx="160" cy="158" rx="57" ry="59" fill="#FDDCB5" stroke="#111827" stroke-width="2.5"/>
+            <!-- Hair -->
+            <path d="M108 146 Q113 104 160 106 Q207 104 212 146" fill="#111827"/>
+            <!-- Left eye -->
+            <ellipse cx="139" cy="154" rx="13" ry="15" fill="white" stroke="#111827" stroke-width="2"/>
+            <ellipse cx="139" cy="156" rx="8" ry="10" fill="#111827"/>
+            <ellipse cx="142" cy="153" rx="3" ry="3" fill="white"/>
+            <!-- Right eye -->
+            <ellipse cx="181" cy="154" rx="13" ry="15" fill="white" stroke="#111827" stroke-width="2"/>
+            <ellipse cx="181" cy="156" rx="8" ry="10" fill="#111827"/>
+            <ellipse cx="184" cy="153" rx="3" ry="3" fill="white"/>
+            <!-- Brows -->
+            <path d="M127 137 Q139 132 151 137" stroke="#111827" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M169 137 Q181 132 193 137" stroke="#111827" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <!-- Blush -->
+            <ellipse cx="122" cy="168" rx="11" ry="7" fill="#FFB3A7" opacity=".6"/>
+            <ellipse cx="198" cy="168" rx="11" ry="7" fill="#FFB3A7" opacity=".6"/>
+            <!-- Nose -->
+            <ellipse cx="160" cy="172" rx="4" ry="3" fill="#E8A87C"/>
+            <!-- Mouth -->
+            <path d="M148 188 Q160 202 172 188" stroke="#111827" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <!-- Neck -->
+            <rect x="146" y="213" width="28" height="24" rx="4" fill="#FDDCB5" stroke="#111827" stroke-width="2"/>
+            <!-- Áo dài body -->
+            <path d="M105 238 Q105 225 136 223 L146 223 L146 240 L174 240 L174 223 L184 223 Q215 225 215 238 L222 340 L98 340 Z" fill="#FF7A2F" stroke="#111827" stroke-width="2.5"/>
+            <!-- Collar -->
+            <path d="M146 223 L159 256 L174 223" stroke="#111827" stroke-width="2" fill="none"/>
+            <!-- Buttons -->
+            <circle cx="159" cy="261" r="3" fill="#FFD600" stroke="#111827" stroke-width="1.5"/>
+            <circle cx="159" cy="277" r="3" fill="#FFD600" stroke="#111827" stroke-width="1.5"/>
+            <!-- Left arm -->
+            <path d="M105 242 L88 295" stroke="#FF7A2F" stroke-width="20" stroke-linecap="round"/>
+            <path d="M105 242 L88 295" stroke="#111827" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Right arm (waving) -->
+            <path d="M215 242 L248 198" stroke="#FF7A2F" stroke-width="20" stroke-linecap="round"/>
+            <path d="M215 242 L248 198" stroke="#111827" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Right hand -->
+            <circle cx="248" cy="192" r="10" fill="#FDDCB5" stroke="#111827" stroke-width="2"/>
+            <path d="M240 185 Q237 177 241 172" stroke="#111827" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M248 183 Q246 175 250 170" stroke="#111827" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M256 185 Q255 177 259 172" stroke="#111827" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Skirt -->
+            <path d="M98 340 L104 390 L216 390 L222 340 Z" fill="#FFD600" stroke="#111827" stroke-width="2.5"/>
+            <!-- Shadow -->
+            <ellipse cx="160" cy="396" rx="60" ry="8" fill="#111827" opacity=".1"/>
+          </svg>
+          <div class="xp-flt">⚡ +50 XP Earned!</div>
+          <div class="str-flt">🔥 7-Day Streak!</div>
+          <div class="word-flt" style="top:8px;left:-52px;background:var(--s);animation:fl 3s ease-in-out infinite .5s">Cảm ơn 🙏</div>
+          <div class="word-flt" style="bottom:90px;left:-48px;background:#fff;animation:fl 3s ease-in-out infinite 1.5s;font-size:12px">Bún bò 🍜</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- bg circle -->
+  <div style="position:absolute;top:-80px;right:-80px;width:360px;height:360px;background:var(--p);border-radius:50%;opacity:.05;pointer-events:none"></div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats">
+  <div class="wrap stats-row">
+    <div class="st"><span class="st-n">50K+</span><span class="st-l">🌍 Learners</span></div>
+    <div class="st-div"></div>
+    <div class="st"><span class="st-n">6</span><span class="st-l">🎵 Tones</span></div>
+    <div class="st-div"></div>
+    <div class="st"><span class="st-n">200+</span><span class="st-l">💬 Dialogues</span></div>
+    <div class="st-div"></div>
+    <div class="st"><span class="st-n">1,000+</span><span class="st-l">📇 Flashcards</span></div>
+    <div class="st-div"></div>
+    <div class="st"><span class="st-n">Free</span><span class="st-l">💰 Forever</span></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="feat" id="feat">
+  <div class="wrap">
+    <div class="sh">
+      <p class="ey mono">// why it works</p>
+      <h2 style="font-size:clamp(30px,4.5vw,48px);font-weight:900;letter-spacing:-1px">
+        Learning Vietnamese<br>
+        <span class="hbox">shouldn't be painful.</span>
+      </h2>
+      <p style="font-size:16px;color:var(--mu);margin-top:14px;max-width:500px;margin-left:auto;margin-right:auto">
+        Built for total beginners who want to actually speak — not just memorize.
+      </p>
+    </div>
+    <div class="feat-g">
+      <!-- Flashcards -->
+      <div class="fcard">
+        <div class="ficon" style="background:var(--p)">📇</div>
+        <div class="ftag">Core Feature</div>
+        <h3 style="font-size:20px;font-weight:800;margin-bottom:10px">Flashcard Drills</h3>
+        <p style="font-size:14px;color:var(--mu);line-height:1.65;margin-bottom:20px">Flip through hundreds of words with images, audio, and spaced repetition. Your brain learns faster than you think.</p>
+        <div style="background:var(--bg);border:var(--bd);border-radius:14px;padding:14px;text-align:center;box-shadow:3px 3px 0 #111">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:30px;color:var(--p)">Cà phê</div>
+          <div style="font-size:12px;color:var(--mu);margin-top:3px">☕ tap to reveal</div>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:8px">
+          <div style="flex:1;background:var(--ok);border:var(--bd);border-radius:999px;padding:8px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;color:#fff;cursor:pointer;box-shadow:3px 3px 0 #111">✓ Got it!</div>
+          <div style="flex:1;background:#f1f5f9;border:var(--bd);border-radius:999px;padding:8px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;cursor:pointer;box-shadow:3px 3px 0 #111">✗ Again</div>
+        </div>
+      </div>
+      <!-- Dialogues -->
+      <div class="fcard">
+        <div class="ficon" style="background:var(--s)">💬</div>
+        <div class="ftag c2">Daily Practice</div>
+        <h3 style="font-size:20px;font-weight:800;margin-bottom:10px">Real-Life Dialogues</h3>
+        <p style="font-size:14px;color:var(--mu);line-height:1.65;margin-bottom:20px">Order phở, haggle at the market, catch a Grab. Real scenarios you'll actually use on the streets of Vietnam.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="background:var(--p);color:#fff;border:var(--bd);border-radius:14px 14px 3px 14px;padding:9px 13px;font-size:13px;font-weight:600;align-self:flex-end;max-width:75%">Cho tôi một tô phở! 🍜</div>
+          <div style="font-size:10px;color:var(--mu);text-align:right;padding-right:4px">"Give me a bowl of phở!"</div>
+          <div style="background:var(--bg);border:var(--bd);border-radius:14px 14px 14px 3px;padding:9px 13px;font-size:13px;font-weight:600;max-width:75%">Dạ, một lúc nhé! 🙏</div>
+          <div style="font-size:10px;color:var(--mu);padding-left:4px">"Yes, just a moment!"</div>
+        </div>
+      </div>
+      <!-- XP -->
+      <div class="fcard">
+        <div class="ficon" style="background:var(--y)">🏆</div>
+        <div class="ftag">Gamification</div>
+        <h3 style="font-size:20px;font-weight:800;margin-bottom:10px">XP & Streaks</h3>
+        <p style="font-size:14px;color:var(--mu);line-height:1.65;margin-bottom:20px">Earn XP, maintain streaks, unlock badges, and climb the leaderboard. Learning feels like a game — because it is.</p>
+        <div style="background:var(--bg);border:var(--bd);border-radius:14px;padding:14px;box-shadow:3px 3px 0 #111">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <span style="font-weight:700;font-size:13px">⚡ Level 5 — Beginner Pro</span>
+            <span style="font-weight:700;font-size:13px;color:var(--p)">720 XP</span>
+          </div>
+          <div class="xpbar-wrap"><div class="xpbar" style="width:72%"></div></div>
+          <div style="font-size:11px;color:var(--mu);margin-top:5px">280 XP to next level</div>
+          <div style="display:flex;gap:7px;margin-top:11px;flex-wrap:wrap">
+            <span style="background:var(--y);border:2px solid #111;border-radius:7px;padding:3px 9px;font-size:11px;font-weight:700">🔥 7-Day</span>
+            <span style="background:var(--s);border:2px solid #111;border-radius:7px;padding:3px 9px;font-size:11px;font-weight:700">🍜 Pho Master</span>
+            <span style="background:#f1f5f9;border:2px solid #111;border-radius:7px;padding:3px 9px;font-size:11px;font-weight:600;opacity:.45">🔒 ???</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLASHCARD DEMO -->
+<section class="flsec" id="flash">
+  <div class="wrap">
+    <div class="fl-g">
+      <div>
+        <p class="ey mono">// flashcard drills</p>
+        <h2 style="font-size:clamp(30px,4.5vw,50px);font-weight:900;letter-spacing:-1.5px;margin-bottom:14px">
+          Flip. Learn.<br>Never forget.
+        </h2>
+        <p style="font-size:16px;color:rgba(17,24,39,.72);line-height:1.65;margin-bottom:28px">
+          Spaced repetition means you review words right before you'd forget them. Science-backed, chaos-flavored.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:9px;font-weight:600;font-size:14px">
+            <span style="width:26px;height:26px;background:var(--p);border:2px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;flex-shrink:0">✓</span>Spaced repetition algorithm
+          </div>
+          <div style="display:flex;align-items:center;gap:9px;font-weight:600;font-size:14px">
+            <span style="width:26px;height:26px;background:var(--p);border:2px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;flex-shrink:0">✓</span>Audio pronunciation
+          </div>
+          <div style="display:flex;align-items:center;gap:9px;font-weight:600;font-size:14px">
+            <span style="width:26px;height:26px;background:var(--p);border:2px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;flex-shrink:0">✓</span>1,000+ Vietnamese words
+          </div>
+        </div>
+      </div>
+      <!-- Card -->
+      <div>
+        <div class="persp" id="cardDemo" onclick="flipFC()">
+          <div class="fc-inner" id="fcInner">
+            <div class="face front">
+              <div style="font-size:44px;margin-bottom:10px" id="cardEmoji">🍜</div>
+              <div class="fw" id="cardWord">Phở</div>
+              <div class="fhint">tap to reveal meaning</div>
+            </div>
+            <div class="face back">
+              <div style="font-size:44px;margin-bottom:10px" id="cardEmojiB">🍜</div>
+              <div class="fm" id="cardMeaning">Beef Noodle Soup</div>
+              <div class="fp" id="cardPronouce">/fəː/</div>
+              <div style="font-size:12px;color:var(--mu);margin-top:4px" id="cardTone">🎵 Tone: Huyền (falling)</div>
+            </div>
+          </div>
+        </div>
+        <p style="text-align:center;font-size:13px;color:rgba(17,24,39,.6);font-weight:500;margin-top:10px">👆 Tap the card to flip!</p>
+        <div class="dots" id="dots">
+          <div class="dot on"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="fc-btns">
+          <button onclick="prevFC()" class="btn bo" style="font-size:14px;padding:10px 20px">← Prev</button>
+          <button onclick="nextFC()" class="btn bp" style="font-size:14px;padding:10px 22px">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIALOGUE SECTION -->
+<section class="dlsec" id="dial">
+  <div class="wrap">
+    <div class="dl-g">
+      <!-- Chat window -->
+      <div class="cw">
+        <div class="ch"><span class="cst"></span>🍜 Ordering at a Phở Shop — Daily Dialogue</div>
+        <div class="cb">
+          <div class="cm">
+            <div class="av">👩‍🍳</div>
+            <div>
+              <div class="bbl bv">Ăn gì đây? 🍜</div>
+              <div class="bsub">"What would you like to eat?"</div>
+            </div>
+          </div>
+          <div class="cm r">
+            <div class="av" style="background:var(--y)">🧑</div>
+            <div style="text-align:right">
+              <div class="bbl bu">Cho tôi một tô phở bò!</div>
+              <div class="bsub">"Give me a bowl of beef pho!"</div>
+            </div>
+          </div>
+          <div class="cm">
+            <div class="av">👩‍🍳</div>
+            <div>
+              <div class="bbl bv">Phở chín hay tái? 🥩</div>
+              <div class="bsub">"Well-done or rare beef?"</div>
+            </div>
+          </div>
+          <div class="cm r">
+            <div class="av" style="background:var(--y)">🧑</div>
+            <div style="text-align:right">
+              <div class="bbl bu">Tái ạ. Cảm ơn! 🙏</div>
+              <div class="bsub">"Rare please. Thank you!"</div>
+            </div>
+          </div>
+        </div>
+        <div class="cf">
+          <input class="ci" type="text" placeholder="Type your Vietnamese reply..." readonly>
+          <button class="btn bp" style="font-size:13px;padding:9px 16px;white-space:nowrap">Send 🍜</button>
+        </div>
+      </div>
+      <!-- Info -->
+      <div>
+        <p class="ey mono">// daily dialogues</p>
+        <h2 style="font-size:clamp(28px,4vw,46px);font-weight:900;letter-spacing:-1.5px;margin-bottom:14px">
+          Talk like you're<br>
+          <span class="wave">already there.</span>
+        </h2>
+        <p style="font-size:16px;color:var(--mu);line-height:1.65;margin-bottom:28px">
+          A fresh real-life scenario every day. Ordering street food, haggling, catching a Grab — Vietnamese in context, not in a vacuum.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="dcard">
+            <span style="font-size:30px">🛺</span>
+            <div>
+              <div style="font-weight:700;font-size:14px">Negotiating a xe ôm ride</div>
+              <div style="font-size:12px;color:var(--mu);margin-top:2px">Intermediate · 8 lines · 🔥 Popular</div>
+            </div>
+          </div>
+          <div class="dcard">
+            <span style="font-size:30px">🏪</span>
+            <div>
+              <div style="font-weight:700;font-size:14px">Shopping at Bến Thành Market</div>
+              <div style="font-size:12px;color:var(--mu);margin-top:2px">Beginner · 12 lines · ⭐ Today's pick</div>
+            </div>
+          </div>
+          <div class="dcard">
+            <span style="font-size:30px">☕</span>
+            <div>
+              <div style="font-weight:700;font-size:14px">Ordering cà phê trứng</div>
+              <div style="font-size:12px;color:var(--mu);margin-top:2px">Beginner · 6 lines · 💛 New</div>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn bp" style="margin-top:24px;width:100%;justify-content:center;font-size:15px;padding:15px">Explore All Dialogues →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <!-- Doodle stars -->
+  <svg style="position:absolute;top:24px;left:48px;opacity:.18" width="60" height="60" viewBox="0 0 60 60"><polygon points="30,4 35,22 54,22 39,33 44,52 30,42 16,52 21,33 6,22 25,22" fill="#111827"/></svg>
+  <svg style="position:absolute;bottom:24px;right:60px;opacity:.14" width="50" height="50" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke="#111827" stroke-width="3" stroke-dasharray="7 4"/></svg>
+  <svg style="position:absolute;top:30px;right:180px;opacity:.15" width="36" height="36" viewBox="0 0 36 36"><polygon points="18,2 21,13 32,8 24,16 32,22 21,19 20,30 18,20 9,28 14,18 4,14 14,14" fill="#111827"/></svg>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div style="margin-bottom:8px">
+      <span class="spin-star">⭐</span>
+      <span class="spin-star" style="animation-duration:12s;animation-delay:.5s;font-size:18px">⭐</span>
+      <span class="spin-star" style="animation-duration:6s;animation-delay:1s;font-size:22px">⭐</span>
+    </div>
+    <h2 class="cta-title">
+      Ready to say<br>
+      <span style="-webkit-text-stroke:2.5px #111827;color:var(--y)">"Xin chào!" 👋</span>
+    </h2>
+    <p style="font-size:17px;max-width:480px;margin:0 auto 32px;color:rgba(17,24,39,.68);line-height:1.65">
+      Join 50,000+ learners exploring Vietnamese — one flashcard, one dialogue, one laugh at a time.
+    </p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="#" class="btn bp" style="font-size:17px;padding:17px 40px">Start Learning Free 🚀</a>
+      <a href="#" class="btn bo" style="font-size:17px;padding:17px 30px">Watch the demo</a>
+    </div>
+    <p style="margin-top:18px;font-size:13px;color:rgba(17,24,39,.45);font-weight:500">No credit card. No nonsense. Just Vietnamese. 🍜</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap fi-row">
+    <div class="fl-logo">🍜 XinChào</div>
+    <div style="display:flex;gap:20px">
+      <a href="#" style="color:rgba(255,255,255,.45);text-decoration:none;font-size:14px">About</a>
+      <a href="#" style="color:rgba(255,255,255,.45);text-decoration:none;font-size:14px">Blog</a>
+      <a href="#" style="color:rgba(255,255,255,.45);text-decoration:none;font-size:14px">Twitter</a>
+    </div>
+    <div style="font-size:13px;color:rgba(255,255,255,.35)">Made with 🧡 for Vietnamese learners worldwide</div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+const cards=[
+  {w:'Phở',e:'🍜',m:'Beef Noodle Soup',p:'/fəː/',t:'Huyền (falling)'},
+  {w:'Cảm ơn',e:'🙏',m:'Thank You',p:'/kam ʔən/',t:'Hỏi (dipping)'},
+  {w:'Xin chào',e:'👋',m:'Hello',p:'/sin tɕâːw/',t:'Mixed tones'},
+  {w:'Bún bò',e:'🥣',m:'Beef Vermicelli',p:'/ɓun ɓɔ/',t:'Huyền'},
+  {w:'Cà phê',e:'☕',m:'Coffee',p:'/ka feː/',t:'Huyền'}
+];
+let cur=0,flipped=false;
+function flipFC(){flipped=!flipped;document.getElementById('fcInner').classList.toggle('flip',flipped)}
+function setCard(){
+  const c=cards[cur];
+  document.getElementById('cardWord').textContent=c.w;
+  document.getElementById('cardEmoji').textContent=c.e;
+  document.getElementById('cardEmojiB').textContent=c.e;
+  document.getElementById('cardMeaning').textContent=c.m;
+  document.getElementById('cardPronouce').textContent=c.p;
+  document.getElementById('cardTone').textContent='🎵 Tone: '+c.t;
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===cur));
+  flipped=false;
+  document.getElementById('fcInner').classList.remove('flip');
+}
+function nextFC(){cur=(cur+1)%cards.length;setCard()}
+function prevFC(){cur=(cur-1+cards.length)%cards.length;setCard()}
+</script>
