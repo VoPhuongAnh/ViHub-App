@@ -1,0 +1,425 @@
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5/800.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5/900.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/400.css">
+<style>
+:root{--p:#FF7A2F;--s:#00D4FF;--y:#FFD600;--ok:#16A34A;--bg:#F8F6F1;--ink:#111827;--mu:#64748B;--bd:2.5px solid #111827;--sh:4px 4px 0 #111827;--sh2:6px 6px 0 #111827;--rad:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+h1,h2,h3,h4,h5{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.15}
+.mono{font-family:'JetBrains Mono',monospace}
+
+nav{background:var(--bg);border-bottom:var(--bd);padding:13px 0}
+.nw{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:19px;display:flex;align-items:center;gap:8px;cursor:pointer}
+.lchip{background:var(--p);color:#fff;border:2.5px solid var(--ink);border-radius:9px;padding:1px 10px;font-size:17px;line-height:1.4;box-shadow:3px 3px 0 #111}
+.nl{display:flex;gap:22px;list-style:none}
+.nl a{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;color:var(--mu);text-decoration:none;padding:6px 14px;border-radius:999px;transition:all .15s;border:2px solid transparent}
+.nl a:hover{color:var(--ink);border-color:var(--ink)}
+.nl a.active{color:#fff;background:var(--ink);border-color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;border-radius:999px;border:var(--bd);cursor:pointer;transition:transform .1s,box-shadow .1s;text-decoration:none;line-height:1;font-size:13px;padding:9px 20px}
+.btn:hover{transform:translate(-2px,-2px)}
+.btn:active{transform:translate(1px,1px);box-shadow:none!important}
+.bp{background:var(--p);color:#fff;box-shadow:var(--sh)}
+.bp:hover{box-shadow:var(--sh2)}
+.bo{background:#fff;color:var(--ink);box-shadow:var(--sh)}
+.bo:hover{box-shadow:var(--sh2)}
+
+.page{max-width:1200px;margin:0 auto;padding:28px 24px;display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:start}
+
+.sidebar{display:flex;flex-direction:column;gap:10px;position:sticky;top:24px}
+.sb-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
+.prov-btn{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;border:var(--bd);border-radius:18px;background:#fff;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:14px;box-shadow:var(--sh);transition:transform .15s,box-shadow .15s,background .15s;text-align:left}
+.prov-btn:hover{transform:translate(-2px,-2px);box-shadow:var(--sh2)}
+.prov-btn.active{background:var(--ink);color:#fff;box-shadow:var(--sh2)}
+.prov-btn.active .pico{filter:grayscale(0) brightness(2)}
+.pico{font-size:24px;flex-shrink:0}
+.prov-meta{display:flex;flex-direction:column;gap:1px}
+.prov-name{font-size:14px;font-weight:800}
+.prov-sub{font-size:11px;font-weight:500;opacity:.6}
+
+.sb-divider{height:1.5px;background:var(--ink);opacity:.1;margin:6px 0}
+
+.prog-card{background:#fff;border:var(--bd);border-radius:18px;padding:14px;box-shadow:3px 3px 0 #111}
+.prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.xpbar-bg{background:#e5e7eb;border:2px solid var(--ink);border-radius:999px;height:12px;overflow:hidden}
+.xpbar-fill{height:100%;background:var(--p);border-radius:999px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.sbadge{font-size:10px;font-weight:700;border:2px solid var(--ink);border-radius:6px;padding:2px 7px;background:var(--y)}
+
+.main{display:flex;flex-direction:column;gap:32px}
+
+.hero-box{background:var(--ink);border:var(--bd);border-radius:24px;padding:28px 28px 24px;color:#fff;position:relative;overflow:hidden}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px}
+.hero-prov{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:2px;margin-bottom:5px}
+.hero-ch{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:30px;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.hero-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px;color:rgba(255,255,255,.7);margin-bottom:2px}
+.hero-diff{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border:2px solid rgba(255,255,255,.2);border-radius:999px;font-size:11px;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif}
+.chaps{display:flex;gap:7px;flex-wrap:wrap}
+.chbtn{width:36px;height:36px;border:2.5px solid rgba(255,255,255,.25);border-radius:10px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.5);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.chbtn:hover{border-color:rgba(255,255,255,.6);color:#fff;background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.chbtn.active{background:var(--p);border-color:var(--p);color:#fff;box-shadow:0 0 0 2px rgba(255,122,47,.3)}
+.chbtn.done{background:rgba(22,163,74,.2);border-color:#16A34A;color:#4ADE80}
+
+.sec-hd{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.sec-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--p);text-transform:uppercase;letter-spacing:2px;padding:4px 10px;background:#FFF0E8;border:2px solid var(--p);border-radius:7px}
+.sec-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.5px}
+
+.chat-wrap{background:#fff;border:var(--bd);border-radius:22px;overflow:hidden;box-shadow:var(--sh)}
+.chat-hdr{background:var(--ink);color:#fff;padding:13px 18px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;display:flex;align-items:center;gap:9px}
+.chat-dot{width:8px;height:8px;background:var(--ok);border-radius:50%;flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.chat-body{padding:22px 20px;display:flex;flex-direction:column;gap:16px;min-height:280px}
+.cm{display:flex;gap:10px;align-items:flex-end}
+.cm.r{flex-direction:row-reverse}
+.av{width:38px;height:38px;border-radius:50%;border:var(--bd);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--bg)}
+.bbl{max-width:240px;padding:11px 16px;border:2.5px solid var(--ink);line-height:1.45;font-weight:600;font-size:14px}
+.bbl.v{background:var(--p);color:#fff;border-radius:18px 18px 4px 18px}
+.bbl.u{background:var(--y);color:var(--ink);border-radius:18px 18px 18px 4px}
+.tr{font-size:11px;color:var(--mu);font-weight:500;margin-top:3px}
+.chat-inp{border-top:var(--bd);padding:14px 16px;display:flex;gap:10px;align-items:center}
+.cinp{flex:1;border:var(--bd);border-radius:999px;padding:10px 16px;font-family:'Inter',sans-serif;font-size:13px;background:var(--bg);outline:none;color:var(--ink)}
+.cinp:focus{border-color:var(--p)}
+.send-btn{background:var(--p);border:var(--bd);border-radius:999px;padding:10px 18px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;color:#fff;cursor:pointer;box-shadow:3px 3px 0 #111;transition:all .15s}
+.send-btn:hover{box-shadow:5px 5px 0 #111;transform:translate(-1px,-1px)}
+
+.words-grid{display:flex;flex-direction:column;gap:14px}
+.word-card{background:#fff;border:var(--bd);border-radius:18px;padding:18px 20px;box-shadow:3px 3px 0 #111;display:grid;grid-template-columns:auto 1fr;gap:0 18px;align-items:start}
+.word-vn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:28px;color:var(--p);grid-row:1/3;align-self:center;min-width:100px;padding-right:18px;border-right:var(--bd)}
+.word-en{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:16px;margin-bottom:2px}
+.word-ipa{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mu);margin-bottom:8px}
+.word-tone{display:inline-flex;align-items:center;gap:4px;background:var(--y);border:2px solid var(--ink);border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;margin-bottom:8px}
+.word-sample{font-size:13px;line-height:1.55;color:#374151;background:var(--bg);border-radius:10px;padding:9px 12px;border-left:3.5px solid var(--p)}
+.word-sample span{color:var(--p);font-weight:700}
+
+.gram-list{display:flex;flex-direction:column;gap:18px}
+.gram-card{background:#fff;border:var(--bd);border-radius:18px;box-shadow:3px 3px 0 #111;overflow:hidden}
+.gram-hdr{background:var(--s);border-bottom:var(--bd);padding:12px 20px;display:flex;align-items:center;gap:11px}
+.gram-num{width:28px;height:28px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:13px;flex-shrink:0}
+.gram-point{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:15px}
+.gram-body{padding:18px 20px}
+.gram-rule{font-size:13px;color:#374151;line-height:1.65;margin-bottom:12px}
+.gram-ex{background:var(--bg);border:var(--bd);border-radius:12px;padding:10px 14px}
+.gram-vn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:15px;color:var(--ink);margin-bottom:2px}
+.gram-en{font-size:12px;color:var(--mu);font-weight:500}
+.gram-annot{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{font-size:11px;font-weight:700;border:2px solid var(--ink);border-radius:6px;padding:3px 9px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeUp .4s ease both}
+
+@media(max-width:700px){
+.page{grid-template-columns:1fr}
+.sidebar{position:static;flex-direction:row;flex-wrap:wrap}
+.prov-btn{width:auto;flex:1;min-width:120px}
+}
+</style>
+
+<h2 class="sr-only">XinChào dialogues page — select a Vietnamese province and chapter to practice daily conversations</h2>
+
+<nav>
+  <div class="nw">
+    <div class="logo"><span class="lchip">🍜</span>XinChào</div>
+    <ul class="nl">
+      <li><a href="#">Home</a></li>
+      <li><a href="#" class="active">Dialogues</a></li>
+      <li><a href="#">Flashcards</a></li>
+      <li><a href="#">Progress</a></li>
+    </ul>
+    <button class="btn bp">🔥 7-Day Streak</button>
+  </div>
+</nav>
+
+<div class="page">
+  <aside class="sidebar">
+    <div class="sb-label">// Choose province</div>
+
+    <button class="prov-btn active" onclick="setProvince(0)" id="pb0">
+      <span class="pico">🏛️</span>
+      <div class="prov-meta">
+        <span class="prov-name">Hà Nội</span>
+        <span class="prov-sub">Northern dialect</span>
+      </div>
+    </button>
+    <button class="prov-btn" onclick="setProvince(1)" id="pb1">
+      <span class="pico">🏖️</span>
+      <div class="prov-meta">
+        <span class="prov-name">Đà Nẵng</span>
+        <span class="prov-sub">Central dialect</span>
+      </div>
+    </button>
+    <button class="prov-btn" onclick="setProvince(2)" id="pb2">
+      <span class="pico">🌆</span>
+      <div class="prov-meta">
+        <span class="prov-name">Hồ Chí Minh</span>
+        <span class="prov-sub">Southern dialect</span>
+      </div>
+    </button>
+
+    <div class="sb-divider"></div>
+    <div class="sb-label">// Your progress</div>
+
+    <div class="prog-card">
+      <div class="prog-row">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px">Level 5</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu)">720 / 1000 XP</span>
+      </div>
+      <div class="xpbar-bg"><div class="xpbar-fill" style="width:72%"></div></div>
+      <div class="badge-row">
+        <span class="sbadge">🔥 7 Days</span>
+        <span class="sbadge" style="background:var(--s)">🍜 Phở Pro</span>
+        <span class="sbadge" style="background:#e5e7eb;opacity:.5">🔒 ???</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main" id="mainContent">
+  </main>
+</div>
+
+<script>
+const DATA={
+  provinces:[
+    {
+      name:'Hà Nội',emoji:'🏛️',dialect:'Northern dialect',color:'#FF7A2F',
+      chapters:[
+        {title:'Ordering Phở',diff:'Beginner',diffColor:'#16A34A',lines:8,
+         chat:[
+           {who:'v',av:'👩‍🍳',vn:'Ăn gì đây?',en:'What would you like to eat?'},
+           {who:'u',av:'🧑',vn:'Cho tôi một tô phở bò!',en:'Give me a bowl of beef pho!'},
+           {who:'v',av:'👩‍🍳',vn:'Phở chín hay tái?',en:'Well-done or rare beef?'},
+           {who:'u',av:'🧑',vn:'Tái ạ. Cảm ơn!',en:'Rare please. Thank you!'},
+           {who:'v',av:'👩‍🍳',vn:'Dạ, một lúc nhé!',en:'Yes, just a moment!'},
+         ],
+         scene:'🍜 Phở Shop — Hà Nội Old Quarter',
+         words:[
+           {vn:'Phở',en:'Beef noodle soup',ipa:'/fəː³³/',tone:'Huyền (falling)',sample:'Tôi ăn <span>phở</span> mỗi sáng. — I eat phở every morning.'},
+           {vn:'Tái',en:'Rare (beef)',ipa:'/taːj³³/',tone:'Sắc (rising)',sample:'Anh muốn thịt <span>tái</span> hay chín? — Do you want rare or well-done meat?'},
+           {vn:'Chín',en:'Well-done / cooked',ipa:'/tɕin³³/',tone:'Sắc (rising)',sample:'Tôi thích <span>chín</span> hơn. — I prefer well-done.'},
+           {vn:'Cảm ơn',en:'Thank you',ipa:'/kam²³³ ʔən³³/',tone:'Hỏi (dipping)',sample:'<span>Cảm ơn</span> chị rất nhiều! — Thank you so much!'},
+         ],
+         grammar:[
+           {point:'Cho tôi + [noun] — "Give me…"',rule:'This is the most common way to order or request something in Vietnamese. It\'s polite and direct. You can use it at any food stall, market, or shop.',vn:'Cho tôi một ly cà phê.',en:'Give me one coffee.',chips:['Subject: Tôi (me)','Verb: Cho (give)','Request pattern']},
+           {point:'Ạ — Polite sentence particle',rule:'Add "ạ" at the end of sentences to show respect, especially when speaking to someone older. It\'s the equivalent of "please" in tone but attaches to the end of phrases.',vn:'Tái ạ.',en:'Rare, please. (respectfully)',chips:['Polite particle','End of sentence','Essential for beginners']},
+           {point:'Hay — "Or" in questions',rule:'"Hay" is used to offer two choices in a question. It always goes between the two options, similar to "or" in English.',vn:'Phở chín hay tái?',en:'Well-done or rare pho?',chips:['Hay = or','Binary choice','Question structure']},
+         ]
+        },
+        {title:'Hailing a Xe Ôm',diff:'Beginner',diffColor:'#16A34A',lines:6,
+         chat:[
+           {who:'v',av:'🛺',vn:'Đi đâu vậy anh?',en:'Where are you going?'},
+           {who:'u',av:'🧑',vn:'Hồ Hoàn Kiếm. Bao nhiêu tiền?',en:'Hồ Hoàn Kiếm. How much?'},
+           {who:'v',av:'🛺',vn:'Năm mươi nghìn thôi.',en:'Just 50,000 dong.'},
+           {who:'u',av:'🧑',vn:'Ba mươi nghìn được không?',en:'Can we do 30,000?'},
+           {who:'v',av:'🛺',vn:'Được, lên xe đi!',en:'OK, hop on!'},
+         ],
+         scene:'🛺 Xe Ôm Ride — Hà Nội Street',
+         words:[
+           {vn:'Đi đâu',en:'Go where / Where are you going?',ipa:'/ɗi ɗəw/',tone:'Various',sample:'<span>Đi đâu</span> vậy? — Where are you heading?'},
+           {vn:'Bao nhiêu',en:'How much / How many',ipa:'/ɓaːw ɲiəw/',tone:'Various',sample:'<span>Bao nhiêu</span> tiền? — How much does it cost?'},
+           {vn:'Được',en:'OK / Acceptable / Can',ipa:'/ɗɨək/',tone:'Nặng (heavy)',sample:'<span>Được</span>, tôi đồng ý. — OK, I agree.'},
+           {vn:'Nghìn',en:'Thousand',ipa:'/ŋin/',tone:'Huyền (falling)',sample:'Một trăm <span>nghìn</span> đồng. — One hundred thousand dong.'},
+         ],
+         grammar:[
+           {point:'Bao nhiêu + [noun] — Asking price/quantity',rule:'Use "bao nhiêu" before the noun to ask how much or how many. It is the key phrase for any shopping or negotiation situation.',vn:'Cái này bao nhiêu tiền?',en:'How much does this cost?',chips:['Bao nhiêu = how much','Question word','Goes before noun']},
+           {point:'[Statement] + được không? — "Is it OK?"',rule:'Add "được không?" to the end of any statement to turn it into a yes/no question asking if something is acceptable or possible.',vn:'Ba mươi nghìn được không?',en:'Is 30,000 OK?',chips:['Được không = Is it OK?','Yes/No question','Negotiation tool']},
+         ]
+        },
+        {title:'At the Bún Chả Stall',diff:'Beginner',diffColor:'#16A34A',lines:5,chat:[{who:'v',av:'👨‍🍳',vn:'Ăn bún chả không?',en:'Do you want bún chả?'},{who:'u',av:'🧑',vn:'Có! Một suất nhé.',en:'Yes! One serving please.'},{who:'v',av:'👨‍🍳',vn:'Nhiều rau không?',en:'A lot of vegetables?'},{who:'u',av:'🧑',vn:'Ít thôi ạ. Không cay.',en:'Just a little. Not spicy.'}],scene:'🥩 Bún Chả Stall — Hàng Mành Street',words:[{vn:'Suất',en:'Serving / portion',ipa:'/ʂuat/',tone:'Sắc',sample:'Cho tôi một <span>suất</span> bún. — Give me one portion of noodles.'},{vn:'Ít thôi',en:'Just a little',ipa:'/ʔit tʰoj/',tone:'Nặng',sample:'Đường <span>ít thôi</span> nhé. — Just a little sugar, please.'},{vn:'Cay',en:'Spicy',ipa:'/kaj/',tone:'Ngang (flat)',sample:'Tôi không ăn được <span>cay</span>. — I cannot eat spicy food.'}],grammar:[{point:'Không + [adjective/verb] — Negation',rule:'"Không" placed before a verb or adjective makes it negative. It works like "not" or "no" in English and is the most essential negation word.',vn:'Tôi không ăn cay.',en:'I do not eat spicy food.',chips:['Không = not/no','Negation marker','Before verb/adjective']},{point:'[Noun] + không? — Yes/No questions',rule:'Put "không?" at the end of a statement to turn it into a yes/no question. The answer is "có" (yes) or "không" (no).',vn:'Ăn bún chả không?',en:'Do you want bún chả?',chips:['Không? = do you?/right?','Tag question','Informal & very common']}]},
+        {title:'Checking into a Hostel',diff:'Elementary',diffColor:'#D97706',lines:6,chat:[{who:'v',av:'👩‍💼',vn:'Anh đặt phòng tên gì?',en:'What name is the booking under?'},{who:'u',av:'🧑',vn:'Tên tôi là Alex.',en:'My name is Alex.'},{who:'v',av:'👩‍💼',vn:'Phòng đôi hay đơn?',en:'Double or single room?'},{who:'u',av:'🧑',vn:'Phòng đơn ạ. Có WiFi không?',en:'Single room. Is there WiFi?'},{who:'v',av:'👩‍💼',vn:'Dạ có, miễn phí.',en:'Yes, it\'s free.'}],scene:'🏨 Hostel Reception — Hà Nội',words:[{vn:'Đặt phòng',en:'To book a room',ipa:'/ɗat foŋ/',tone:'Nặng + Huyền',sample:'Tôi muốn <span>đặt phòng</span> cho 3 ngày. — I want to book a room for 3 days.'},{vn:'Miễn phí',en:'Free of charge',ipa:'/miən fi/',tone:'Ngã + Sắc',sample:'WiFi ở đây <span>miễn phí</span>. — WiFi here is free.'}],grammar:[{point:'Tên tôi là + [name] — "My name is…"',rule:'The standard self-introduction. "Là" means "is/am/are" in Vietnamese and is used for identifying or naming.',vn:'Tên tôi là Alex.',en:'My name is Alex.',chips:['Tên = name','Là = is/am/are','Identity statement']}]},
+        {title:'Buying Train Tickets',diff:'Elementary',diffColor:'#D97706',lines:4,chat:[{who:'v',av:'🎫',vn:'Đi đâu?',en:'Where to?'},{who:'u',av:'🧑',vn:'Đà Nẵng. Ngày mai.',en:'Đà Nẵng. Tomorrow.'},{who:'v',av:'🎫',vn:'Vé hạng mấy?',en:'Which ticket class?'},{who:'u',av:'🧑',vn:'Hạng hai ạ. Bao nhiêu?',en:'Second class please. How much?'}],scene:'🚂 Hà Nội Train Station',words:[{vn:'Vé',en:'Ticket',ipa:'/ve/',tone:'Sắc',sample:'Tôi cần mua hai <span>vé</span>. — I need to buy two tickets.'},{vn:'Ngày mai',en:'Tomorrow',ipa:'/ŋaj maj/',tone:'Huyền + Ngang',sample:'Chuyến tàu <span>ngày mai</span> lúc 8 giờ. — Tomorrow\'s train at 8 o\'clock.'}],grammar:[{point:'Ngày + time words — Talking about time',rule:'Vietnamese uses time words before or after the subject. Days, times and dates usually come at the start or end of a sentence.',vn:'Ngày mai tôi đi Đà Nẵng.',en:'Tomorrow I go to Đà Nẵng.',chips:['Ngày mai = tomorrow','Time before subject','Flexible word order']}]},
+        {title:'At the Pharmacy',diff:'Intermediate',diffColor:'#185FA5',lines:5,chat:[{who:'v',av:'💊',vn:'Anh cần gì?',en:'What do you need?'},{who:'u',av:'🧑',vn:'Tôi bị đau đầu. Có thuốc không?',en:'I have a headache. Do you have medicine?'},{who:'v',av:'💊',vn:'Paracetamol được không?',en:'Is paracetamol OK?'},{who:'u',av:'🧑',vn:'Được. Uống bao nhiêu viên?',en:'OK. How many tablets do I take?'},{who:'v',av:'💊',vn:'Hai viên, ngày ba lần.',en:'Two tablets, three times a day.'}],scene:'💊 Nhà Thuốc — Hà Nội',words:[{vn:'Bị',en:'To suffer from / have (illness)',ipa:'/ɓi/',tone:'Nặng',sample:'Tôi <span>bị</span> cảm. — I have a cold.'},{vn:'Thuốc',en:'Medicine',ipa:'/tʰuək/',tone:'Sắc',sample:'<span>Thuốc</span> này uống trước hay sau ăn? — Is this medicine taken before or after eating?'},{vn:'Viên',en:'Tablet / pill (counter word)',ipa:'/viən/',tone:'Ngang',sample:'Uống hai <span>viên</span> mỗi lần. — Take two tablets each time.'}],grammar:[{point:'Bị + [condition] — Describing illness or misfortune',rule:'"Bị" expresses suffering or experiencing something negative. Use it before medical conditions, accidents, or bad situations.',vn:'Tôi bị đau đầu.',en:'I have a headache.',chips:['Bị = to suffer/have','Negative experiences','Precedes condition']},{point:'[Verb] + bao nhiêu [counter]? — Asking quantity',rule:'Combine "bao nhiêu" with a classifier/counter word to ask about specific quantities of things.',vn:'Uống bao nhiêu viên?',en:'How many tablets to take?',chips:['Bao nhiêu = how many','Classifier: viên (tablet)','Quantity question']}]},
+        {title:'Getting a Haircut',diff:'Intermediate',diffColor:'#185FA5',lines:4,chat:[{who:'v',av:'✂️',vn:'Anh muốn cắt kiểu gì?',en:'What style would you like?'},{who:'u',av:'🧑',vn:'Cắt ngắn ở hai bên. Trên để dài.',en:'Short on the sides. Long on top.'},{who:'v',av:'✂️',vn:'Có muốn gội đầu không?',en:'Do you want a hair wash?'},{who:'u',av:'🧑',vn:'Có ạ, cảm ơn.',en:'Yes please, thank you.'}],scene:'✂️ Tiệm Tóc — Hà Nội',words:[{vn:'Cắt',en:'To cut',ipa:'/kat/',tone:'Sắc',sample:'Tôi muốn <span>cắt</span> tóc. — I want a haircut.'},{vn:'Ngắn',en:'Short',ipa:'/ŋan/',tone:'Sắc',sample:'Tóc <span>ngắn</span> trông trẻ hơn. — Short hair looks younger.'}],grammar:[{point:'Muốn + [verb] — Expressing wants',rule:'"Muốn" is the key verb for expressing desire or want. It always precedes the action verb.',vn:'Anh muốn cắt kiểu gì?',en:'What style do you want?',chips:['Muốn = to want','Precedes verb','Very common']}]},
+        {title:'At the Museum',diff:'Intermediate',diffColor:'#185FA5',lines:5,chat:[{who:'v',av:'🏛️',vn:'Vé vào cửa 50 nghìn đồng.',en:'Entrance ticket is 50,000 dong.'},{who:'u',av:'🧑',vn:'Có giảm giá cho sinh viên không?',en:'Is there a student discount?'},{who:'v',av:'🏛️',vn:'Có, bạn có thẻ sinh viên không?',en:'Yes, do you have a student card?'},{who:'u',av:'🧑',vn:'Có đây ạ.',en:'Here it is.'},{who:'v',av:'🏛️',vn:'Được, 30 nghìn thôi nhé.',en:'OK, just 30,000 then.'}],scene:'🏛️ Bảo Tàng Lịch Sử — Hà Nội',words:[{vn:'Giảm giá',en:'Discount',ipa:'/zaːm zaː/',tone:'Hỏi + Sắc',sample:'Có <span>giảm giá</span> gì không? — Is there any discount?'},{vn:'Sinh viên',en:'Student',ipa:'/siŋ viən/',tone:'Ngang + Ngang',sample:'Tôi là <span>sinh viên</span> đại học. — I am a university student.'}],grammar:[{point:'Có + [noun/verb] + không? — Asking if something exists/happens',rule:'This structure with "có...không?" wrapping a verb or noun is one of the most common question patterns. "Có" means "to have/exist".',vn:'Có giảm giá cho sinh viên không?',en:'Is there a student discount?',chips:['Có = have/exist','Không? = question marker','Very high frequency']}]},
+        {title:'Making Friends',diff:'Upper-Intermediate',diffColor:'#993C1D',lines:5,chat:[{who:'v',av:'🧑‍🦱',vn:'Bạn đến từ đâu?',en:'Where are you from?'},{who:'u',av:'🧑',vn:'Tôi đến từ Anh. Còn bạn?',en:'I\'m from England. And you?'},{who:'v',av:'🧑‍🦱',vn:'Tôi người Hà Nội. Bạn học tiếng Việt lâu chưa?',en:'I\'m from Hà Nội. How long have you been learning Vietnamese?'},{who:'u',av:'🧑',vn:'Mới ba tháng thôi. Còn yếu lắm!',en:'Only three months. Still very weak!'},{who:'v',av:'🧑‍🦱',vn:'Nói tốt lắm rồi!',en:'You speak very well already!'}],scene:'☕ Cà Phê Giải Khát — Hà Nội',words:[{vn:'Đến từ',en:'Come from / From',ipa:'/ɗen tɯ/',tone:'Various',sample:'Tôi <span>đến từ</span> Canada. — I come from Canada.'},{vn:'Lâu chưa',en:'For how long (yet)?',ipa:'/law tɕɯə/',tone:'Ngang + Huyền',sample:'Bạn ở đây <span>lâu chưa</span>? — Have you been here long?'},{vn:'Mới',en:'Just / recently / new',ipa:'/məj/',tone:'Sắc',sample:'Tôi <span>mới</span> đến hôm qua. — I just arrived yesterday.'}],grammar:[{point:'Còn + [pronoun]? — "And you?"',rule:'Use "còn" to bounce a question back to someone, like "What about you?" or "And you?" It\'s the most natural way to continue a conversation.',vn:'Còn bạn?',en:'And you? / What about you?',chips:['Còn = and/what about','Conversation bouncer','Social essential']},{point:'[Verb] + lâu chưa? — Asking duration',rule:'"Lâu chưa?" means "for how long already?" and is used to ask about the duration of an ongoing action.',vn:'Bạn học tiếng Việt lâu chưa?',en:'How long have you been studying Vietnamese?',chips:['Lâu = long time','Chưa = yet/already?','Duration question']}]},
+        {title:'At the Post Office',diff:'Upper-Intermediate',diffColor:'#993C1D',lines:4,chat:[{who:'v',av:'📮',vn:'Anh gửi gì vậy?',en:'What are you sending?'},{who:'u',av:'🧑',vn:'Tôi muốn gửi bưu kiện sang Anh.',en:'I want to send a parcel to England.'},{who:'v',av:'📮',vn:'Chuyển phát nhanh hay thường?',en:'Express or standard delivery?'},{who:'u',av:'🧑',vn:'Thường thôi. Mất bao lâu?',en:'Standard. How long does it take?'}],scene:'📮 Bưu Điện — Hà Nội',words:[{vn:'Gửi',en:'To send',ipa:'/gɨj/',tone:'Hỏi',sample:'Tôi muốn <span>gửi</span> thư cho bạn. — I want to send a letter to a friend.'},{vn:'Mất bao lâu',en:'How long does it take?',ipa:'/mat ɓaːw law/',tone:'Various',sample:'<span>Mất bao lâu</span> để đến nơi? — How long does it take to arrive?'}],grammar:[{point:'Mất bao lâu? — Asking time duration',rule:'"Mất" means "to cost/take (time)" and combined with "bao lâu" creates a question about how long something takes.',vn:'Mất bao lâu để đến Anh?',en:'How long does it take to reach England?',chips:['Mất = takes/costs','Bao lâu = how long','Duration essential']}]},
+      ]
+    },
+    {
+      name:'Đà Nẵng',emoji:'🏖️',dialect:'Central dialect',color:'#00D4FF',
+      chapters:[
+        {title:'At the Beach Vendor',diff:'Beginner',diffColor:'#16A34A',lines:5,chat:[{who:'v',av:'🧑‍🌾',vn:'Mua dừa không anh?',en:'Want to buy coconuts?'},{who:'u',av:'🧑',vn:'Một quả bao nhiêu?',en:'How much for one?'},{who:'v',av:'🧑‍🌾',vn:'Mười lăm nghìn thôi.',en:'Just 15,000 dong.'},{who:'u',av:'🧑',vn:'Lấy hai quả nha.',en:'I\'ll take two please.'},{who:'v',av:'🧑‍🌾',vn:'Dạ, để tôi chặt cho.',en:'OK, let me chop them for you.'}],scene:'🥥 Beach Vendor — Mỹ Khê Beach',words:[{vn:'Dừa',en:'Coconut',ipa:'/zɯə/',tone:'Huyền',sample:'Uống <span>dừa</span> tươi mát lắm. — Drinking coconut is very refreshing.'},{vn:'Quả',en:'Fruit (classifier)',ipa:'/kwaː/',tone:'Hỏi',sample:'Cho tôi ba <span>quả</span> xoài. — Give me three mangoes.'},{vn:'Chặt',en:'To chop / cut (with force)',ipa:'/tɕat/',tone:'Nặng',sample:'<span>Chặt</span> dừa xong rồi. — The coconut is chopped already.'}],grammar:[{point:'Lấy + [noun] + nha — Casual "I\'ll take…"',rule:'"Lấy" means "to take" and is the casual way to say you want to purchase something. "Nha" at the end softens the statement.',vn:'Lấy hai quả nha.',en:'I\'ll take two (please).',chips:['Lấy = take/I\'ll have','Nha = softener','Casual purchase phrase']},{point:'Classifier: Quả — for fruit',rule:'Vietnamese uses classifiers before counted nouns. "Quả" is the classifier specifically for round fruits. You cannot say "hai dừa" — it must be "hai quả dừa".',vn:'Hai quả dừa.',en:'Two coconuts.',chips:['Quả = fruit classifier','Required with numbers','Counts round fruits']}]},
+        {title:'Renting a Motorbike',diff:'Beginner',diffColor:'#16A34A',lines:4,chat:[{who:'v',av:'🏍️',vn:'Anh muốn thuê xe không?',en:'Do you want to rent a motorbike?'},{who:'u',av:'🧑',vn:'Muốn. Một ngày bao nhiêu?',en:'Yes. How much per day?'},{who:'v',av:'🏍️',vn:'Một trăm rưỡi một ngày.',en:'150,000 per day.'},{who:'u',av:'🧑',vn:'Thuê ba ngày được không?',en:'Can I rent for three days?'}],scene:'🏍️ Motorbike Rental — Đà Nẵng',words:[{vn:'Thuê',en:'To rent / hire',ipa:'/tʰwe/',tone:'Ngang',sample:'Tôi muốn <span>thuê</span> xe đạp. — I want to rent a bicycle.'},{vn:'Một ngày',en:'One day / per day',ipa:'/mot ŋaj/',tone:'Nặng + Huyền',sample:'Giá <span>một ngày</span> là bao nhiêu? — What is the price per day?'}],grammar:[{point:'[Number] + [time unit] — Duration expressions',rule:'In Vietnamese, duration is expressed with a number followed directly by the time unit. No preposition needed.',vn:'Thuê ba ngày.',en:'Rent for three days.',chips:['Number first','Then time unit','No preposition needed']}]},
+        {title:'Asking for Directions',diff:'Elementary',diffColor:'#D97706',lines:5,chat:[{who:'u',av:'🧑',vn:'Xin lỗi, Cầu Rồng ở đâu?',en:'Excuse me, where is the Dragon Bridge?'},{who:'v',av:'👩',vn:'Đi thẳng rồi rẽ phải.',en:'Go straight then turn right.'},{who:'u',av:'🧑',vn:'Bao xa?',en:'How far?'},{who:'v',av:'👩',vn:'Khoảng năm trăm mét thôi.',en:'About 500 meters only.'},{who:'u',av:'🧑',vn:'Cảm ơn bạn nhiều!',en:'Thank you so much!'}],scene:'🐉 Near Dragon Bridge — Đà Nẵng',words:[{vn:'Xin lỗi',en:'Excuse me / Sorry',ipa:'/sin loj/',tone:'Ngang + Hỏi',sample:'<span>Xin lỗi</span>, đây là ghế của tôi. — Excuse me, this is my seat.'},{vn:'Thẳng',en:'Straight',ipa:'/tʰaŋ/',tone:'Hỏi',sample:'Đi <span>thẳng</span> khoảng 200 mét. — Go straight for about 200 meters.'},{vn:'Rẽ phải',en:'Turn right',ipa:'/ze faːj/',tone:'Ngã + Hỏi',sample:'Đến ngã tư thì <span>rẽ phải</span>. — At the intersection, turn right.'}],grammar:[{point:'Ở đâu? — "Where is…?"',rule:'"Ở" means "to be located at" and "đâu" means "where". Together they form the standard question for asking locations.',vn:'Cầu Rồng ở đâu?',en:'Where is the Dragon Bridge?',chips:['Ở = located at','Đâu = where','Location question']},{point:'Rồi + [action] — "Then" (sequential)',rule:'"Rồi" connects two sequential actions, like "and then". It always comes between the first and second action.',vn:'Đi thẳng rồi rẽ phải.',en:'Go straight and then turn right.',chips:['Rồi = then/after that','Sequential actions','Direction-giving']}]},
+        {title:'At the Fish Market',diff:'Elementary',diffColor:'#D97706',lines:4,chat:[{who:'v',av:'🐟',vn:'Mua cá không cô?',en:'Want to buy fish?'},{who:'u',av:'🧑',vn:'Cá này tươi không?',en:'Is this fish fresh?'},{who:'v',av:'🐟',vn:'Tươi lắm, mới từ biển lên.',en:'Very fresh, just came from the sea.'},{who:'u',av:'🧑',vn:'Một ký bao nhiêu tiền?',en:'How much per kilogram?'}],scene:'🐟 Chợ Cồn Fish Market — Đà Nẵng',words:[{vn:'Tươi',en:'Fresh',ipa:'/tɯəj/',tone:'Ngang',sample:'Rau này có <span>tươi</span> không? — Is this vegetable fresh?'},{vn:'Ký',en:'Kilogram',ipa:'/ki/',tone:'Sắc',sample:'Cho tôi một <span>ký</span> thịt heo. — Give me one kilogram of pork.'}],grammar:[{point:'[Adjective] + lắm — "Very [adjective]"',rule:'"Lắm" placed after an adjective intensifies it, meaning "very" or "so much". It\'s more emphatic than "rất" (which comes before).',vn:'Tươi lắm!',en:'Very fresh!',chips:['Lắm = very (emphatic)','Comes after adjective','More casual than rất']}]},
+        {title:'Dining at a Mì Quảng Restaurant',diff:'Intermediate',diffColor:'#185FA5',lines:5,chat:[{who:'v',av:'👩‍🍳',vn:'Quý khách dùng gì?',en:'What will you have?'},{who:'u',av:'🧑',vn:'Cho tôi một tô mì quảng.',en:'Give me a bowl of mì quảng.'},{who:'v',av:'👩‍🍳',vn:'Thêm bánh tráng không?',en:'Add rice crackers?'},{who:'u',av:'🧑',vn:'Vâng, thêm vào ạ.',en:'Yes, add them in please.'},{who:'v',av:'👩‍🍳',vn:'Dạ, chờ chút nhé.',en:'Please wait a moment.'}],scene:'🍜 Mì Quảng Restaurant — Đà Nẵng',words:[{vn:'Thêm',en:'To add / more',ipa:'/tʰem/',tone:'Ngang',sample:'<span>Thêm</span> chút nước mắm nhé. — Add a little fish sauce please.'},{vn:'Bánh tráng',en:'Rice paper / cracker',ipa:'/ɓajŋ tɾaŋ/',tone:'Sắc + Sắc',sample:'Mì quảng ăn với <span>bánh tráng</span> rất ngon. — Mì quảng is delicious with rice crackers.'},{vn:'Chờ',en:'To wait',ipa:'/tɕəː/',tone:'Huyền',sample:'<span>Chờ</span> tôi một chút nhé. — Wait for me a moment.'}],grammar:[{point:'Quý khách — Formal "you" for customers',rule:'"Quý khách" is a very respectful term for "esteemed guest/customer". You will hear it constantly in restaurants, hotels and shops.',vn:'Quý khách dùng gì?',en:'What will you (esteemed guest) have?',chips:['Quý khách = respected guest','Formal service context','Shows Vietnamese hospitality']}]},
+        {title:'At the Spa',diff:'Intermediate',diffColor:'#185FA5',lines:4,chat:[{who:'v',av:'💆',vn:'Anh muốn massage gì?',en:'What type of massage do you want?'},{who:'u',av:'🧑',vn:'Massage toàn thân một giờ.',en:'Full body massage, one hour.'},{who:'v',av:'💆',vn:'Có bị dị ứng gì không?',en:'Do you have any allergies?'},{who:'u',av:'🧑',vn:'Không. Nhưng đừng bấm mạnh quá.',en:'No. But don\'t press too hard.'}],scene:'💆 Spa — Đà Nẵng',words:[{vn:'Dị ứng',en:'Allergy / allergic',ipa:'/zi ʔɨŋ/',tone:'Nặng + Sắc',sample:'Tôi bị <span>dị ứng</span> với tôm. — I am allergic to shrimp.'},{vn:'Đừng',en:'Don\'t (imperative)',ipa:'/ɗɯŋ/',tone:'Huyền',sample:'<span>Đừng</span> lo, mọi thứ ổn. — Don\'t worry, everything is fine.'}],grammar:[{point:'Đừng + [verb] — Negative command',rule:'"Đừng" is used for negative commands or advice, telling someone not to do something. It\'s gentler than "không được".',vn:'Đừng bấm mạnh quá.',en:'Don\'t press too hard.',chips:['Đừng = don\'t','Negative command','Gentle imperative']}]},
+        {title:'Watching a Fireworks Festival',diff:'Intermediate',diffColor:'#185FA5',lines:4,chat:[{who:'v',av:'🎆',vn:'Năm nay bắn pháo hoa mấy đêm?',en:'How many nights of fireworks this year?'},{who:'u',av:'🧑',vn:'Nghe nói hai đêm cuối tuần.',en:'I heard two weekend nights.'},{who:'v',av:'🎆',vn:'Xem ở đâu tốt nhất?',en:'Where is the best place to watch?'},{who:'u',av:'🧑',vn:'Gần Cầu Rồng là đẹp nhất.',en:'Near the Dragon Bridge is the prettiest.'}],scene:'🎆 Đà Nẵng Fireworks Festival',words:[{vn:'Pháo hoa',en:'Fireworks',ipa:'/faːw hwaː/',tone:'Sắc + Ngang',sample:'<span>Pháo hoa</span> Đà Nẵng đẹp nhất Việt Nam. — Đà Nẵng fireworks are the most beautiful in Vietnam.'},{vn:'Đẹp nhất',en:'Most beautiful / prettiest',ipa:'/ɗep ɲat/',tone:'Nặng + Nặng',sample:'Đây là cảnh <span>đẹp nhất</span> tôi từng thấy. — This is the most beautiful scene I\'ve ever seen.'}],grammar:[{point:'[Adjective] + nhất — Superlative',rule:'Add "nhất" after any adjective to make it superlative ("the most..."). Unlike English, no restructuring needed.',vn:'Đẹp nhất.',en:'The most beautiful.',chips:['Nhất = most','After adjective','Superlative marker']}]},
+        {title:'At a Café by the Sea',diff:'Upper-Intermediate',diffColor:'#993C1D',lines:5,chat:[{who:'v',av:'☕',vn:'Chào, gọi gì cho em ạ?',en:'Hello, what can I get for you?'},{who:'u',av:'🧑',vn:'Cà phê sữa đá một ly.',en:'One iced milk coffee.'},{who:'v',av:'☕',vn:'Ngọt bình thường hay ít đường?',en:'Normal sweet or less sugar?'},{who:'u',av:'🧑',vn:'Ít đường thôi ạ. Ngồi ngoài ban công được không?',en:'Less sugar please. Can I sit on the balcony?'},{who:'v',av:'☕',vn:'Dạ được, view biển đẹp lắm!',en:'Yes! The sea view is beautiful!'}],scene:'☕ Rooftop Café — Đà Nẵng Beachfront',words:[{vn:'Cà phê sữa đá',en:'Vietnamese iced milk coffee',ipa:'/ka fe sɯə ɗaː/',tone:'Various',sample:'<span>Cà phê sữa đá</span> là thức uống phổ biến nhất. — Iced milk coffee is the most popular drink.'},{vn:'Ngọt',en:'Sweet',ipa:'/ŋɔt/',tone:'Nặng',sample:'Trái cây này <span>ngọt</span> lắm. — This fruit is very sweet.'},{vn:'Ban công',en:'Balcony',ipa:'/ɓan koŋ/',tone:'Ngang + Ngang',sample:'Phòng có <span>ban công</span> nhìn ra biển. — The room has a balcony overlooking the sea.'}],grammar:[{point:'[Action] + được không? — "Is it OK to...?"',rule:'Used to politely ask for permission. Place the action first, then "được không?" at the end.',vn:'Ngồi ngoài ban công được không?',en:'Can I sit on the balcony?',chips:['Được không = is it OK?','Permission request','Very polite']},{point:'Ngọt bình thường hay ít đường? — Choice questions',rule:'The "A hay B?" pattern offers a choice. "Bình thường" (normal) vs "ít đường" (less sugar) shows real-life options.',vn:'Ngọt bình thường hay ít đường?',en:'Normal sweetness or less sugar?',chips:['Hay = or (choice)','Bình thường = normal','Choice pattern']}]},
+        {title:'At the Night Market',diff:'Upper-Intermediate',diffColor:'#993C1D',lines:4,chat:[{who:'v',av:'👘',vn:'Áo này vừa không?',en:'Does this shirt fit?'},{who:'u',av:'🧑',vn:'Hơi chật. Có size lớn hơn không?',en:'A bit tight. Do you have a bigger size?'},{who:'v',av:'👘',vn:'Có đây, thử xem nào.',en:'Yes here, try it and see.'},{who:'u',av:'🧑',vn:'Cái này vừa hơn. Mặc cả được không?',en:'This one fits better. Can I bargain?'}],scene:'🌙 Night Market — Đà Nẵng',words:[{vn:'Vừa',en:'To fit / just right',ipa:'/vɯə/',tone:'Huyền',sample:'Đôi giày này <span>vừa</span> chân tôi. — This pair of shoes fits my foot.'},{vn:'Mặc cả',en:'To bargain / haggle',ipa:'/mak kaː/',tone:'Nặng + Hỏi',sample:'Ở chợ thì có thể <span>mặc cả</span>. — At markets you can bargain.'}],grammar:[{point:'Hơi + [adjective] — "A bit / slightly"',rule:'"Hơi" before an adjective softens it, expressing a mild degree. It\'s useful for polite feedback without being blunt.',vn:'Hơi chật.',en:'A bit tight.',chips:['Hơi = a bit/slightly','Before adjective','Polite softener']}]},
+        {title:'Boat Trip Booking',diff:'Upper-Intermediate',diffColor:'#993C1D',lines:5,chat:[{who:'v',av:'⛵',vn:'Anh muốn đi tour gì?',en:'What tour do you want to take?'},{who:'u',av:'🧑',vn:'Tour ra Cù Lao Chàm.',en:'A tour to Cù Lao Chàm island.'},{who:'v',av:'⛵',vn:'Ngày mai có chỗ. Mấy người?',en:'Tomorrow has availability. How many people?'},{who:'u',av:'🧑',vn:'Hai người. Bao gồm bữa trưa không?',en:'Two people. Does it include lunch?'},{who:'v',av:'⛵',vn:'Có, bao gồm tất cả.',en:'Yes, everything is included.'}],scene:'⛵ Tour Booking — Đà Nẵng Harbour',words:[{vn:'Bao gồm',en:'To include / including',ipa:'/ɓaːw gom/',tone:'Ngang + Huyền',sample:'Giá <span>bao gồm</span> thuế và phí dịch vụ. — The price includes tax and service charge.'},{vn:'Chỗ',en:'Spot / place / availability',ipa:'/tɕo/',tone:'Ngã',sample:'Còn <span>chỗ</span> trống không? — Is there any availability?'}],grammar:[{point:'Bao gồm — "Including / to include"',rule:'"Bao gồm" is essential for understanding what\'s included in a tour, meal or package deal. Always check what\'s bao gồm before booking!',vn:'Bao gồm bữa trưa không?',en:'Does it include lunch?',chips:['Bao gồm = includes','Tour/booking context','High-utility phrase']}]},
+      ]
+    },
+    {
+      name:'Hồ Chí Minh',emoji:'🌆',dialect:'Southern dialect',color:'#FFD600',
+      chapters:[
+        {title:'Street Food — Bánh Mì',diff:'Beginner',diffColor:'#16A34A',lines:5,chat:[{who:'v',av:'🥖',vn:'Bánh mì gì vậy?',en:'What kind of bánh mì?'},{who:'u',av:'🧑',vn:'Đặc biệt một cái.',en:'One special (everything) please.'},{who:'v',av:'🥖',vn:'Có ăn rau mùi không?',en:'Do you eat cilantro?'},{who:'u',av:'🧑',vn:'Không ạ. Bỏ ra giúp tôi.',en:'No. Please leave it out.'},{who:'v',av:'🥖',vn:'Dạ, 20 ngàn nha.',en:'Sure, that\'s 20,000.'}],scene:'🥖 Bánh Mì Cart — Bến Thành',words:[{vn:'Đặc biệt',en:'Special / all-of-the-above',ipa:'/ɗak ɓiet/',tone:'Nặng + Nặng',sample:'Cho tôi phần <span>đặc biệt</span>. — Give me the special combination.'},{vn:'Rau mùi',en:'Cilantro / coriander',ipa:'/ɾaw muj/',tone:'Ngang + Huyền',sample:'Tôi không ăn được <span>rau mùi</span>. — I cannot eat cilantro.'},{vn:'Bỏ ra',en:'To remove / leave out',ipa:'/ɓo ɾa/',tone:'Hỏi + Ngang',sample:'<span>Bỏ ra</span> hành lá giúp mình nhé. — Please remove the spring onions.'}],grammar:[{point:'Bỏ + [item] + ra — "Leave out / remove"',rule:'"Bỏ ra" is essential for customizing street food orders. "Bỏ" means to drop/remove and "ra" indicates moving something out.',vn:'Bỏ ra giúp tôi.',en:'Please take it out for me.',chars:['Bỏ = remove','Ra = out','Food customization'],chips:['Bỏ = remove','Ra = out','Food customization']},{point:'Ngàn — Southern shorthand for 1,000 dong',rule:'In HCM City, locals say "ngàn" instead of "nghìn" for thousand. 20 ngàn = 20,000 VND.',vn:'20 ngàn nha.',en:'20,000 (dong), OK?',chips:['Ngàn = thousand (southern)','More casual than nghìn','Southern dialect marker']}]},
+        {title:'Grabbing a Grab',diff:'Beginner',diffColor:'#16A34A',lines:4,chat:[{who:'v',av:'🛵',vn:'Khách đặt xe đi Bến Thành?',en:'Did you book a ride to Bến Thành?'},{who:'u',av:'🧑',vn:'Dạ đúng rồi. Tên tôi là Alex.',en:'Yes that\'s right. My name is Alex.'},{who:'v',av:'🛵',vn:'OK, lên xe đi nha.',en:'OK, hop on.'},{who:'u',av:'🧑',vn:'Cảm ơn, đi nhanh giúp tôi với.',en:'Thanks, please drive fast for me.'}],scene:'🛵 Grab Bike — Hồ Chí Minh City',words:[{vn:'Đúng rồi',en:'That\'s correct / yes exactly',ipa:'/ɗuŋ ɾoj/',tone:'Sắc + Huyền',sample:'<span>Đúng rồi</span>, tôi đặt bàn lúc 7 giờ. — Yes exactly, I booked a table at 7.'},{vn:'Nhanh',en:'Fast / quickly',ipa:'/ɲaŋ/',tone:'Ngang',sample:'Đi <span>nhanh</span> lên, trễ rồi! — Hurry up, we\'re late!'}],grammar:[{point:'Giúp tôi (với) — "Please do it for me"',rule:'"Giúp tôi" literally means "help me" and "với" adds a pleading softener. Together it\'s a natural way to make requests.',vn:'Đi nhanh giúp tôi với.',en:'Please drive fast for me.',chips:['Giúp = help','Với = softener','Request intensifier']}]},
+        {title:'Ordering Cơm Tấm',diff:'Beginner',diffColor:'#16A34A',lines:5,chat:[{who:'v',av:'🍖',vn:'Ăn cơm tấm không?',en:'Want to eat cơm tấm?'},{who:'u',av:'🧑',vn:'Có. Sườn thôi hay có trứng?',en:'Yes. Just ribs or with egg?'},{who:'v',av:'🍖',vn:'Có đủ hết: sườn, trứng, chả.',en:'All included: ribs, egg, pork loaf.'},{who:'u',av:'🧑',vn:'Lấy một phần. Thêm nước mắm.',en:'One portion. Extra fish sauce.'},{who:'v',av:'🍖',vn:'Uống gì không?',en:'Want something to drink?'}],scene:'🍖 Cơm Tấm Stall — Quận 1',words:[{vn:'Sườn',en:'Ribs (pork)',ipa:'/ʂɯəŋ/',tone:'Huyền',sample:'<span>Sườn</span> nướng thơm lắm. — Grilled ribs smell amazing.'},{vn:'Đủ',en:'Enough / sufficient / all',ipa:'/ɗu/',tone:'Hỏi',sample:'Như vậy là <span>đủ</span> rồi. — That is enough.'},{vn:'Nước mắm',en:'Fish sauce',ipa:'/nɯək mam/',tone:'Sắc + Sắc',sample:'<span>Nước mắm</span> là gia vị quan trọng nhất. — Fish sauce is the most important seasoning.'}],grammar:[{point:'Thêm + [noun] — "Extra / add more"',rule:'"Thêm" means to add more of something. Use it to customize your food order or ask for extra condiments.',vn:'Thêm nước mắm.',en:'Extra fish sauce.',chips:['Thêm = add/extra','Food ordering','Very common']}]},
+        {title:'At Ben Thanh Market',diff:'Elementary',diffColor:'#D97706',lines:5,chat:[{who:'v',av:'🛍️',vn:'Cô ơi, vào xem đi!',en:'Miss, come look inside!'},{who:'u',av:'🧑',vn:'Cái áo kia bao nhiêu?',en:'How much is that shirt?'},{who:'v',av:'🛍️',vn:'Hai trăm năm chục ngàn.',en:'Two hundred fifty thousand.'},{who:'u',av:'🧑',vn:'Bớt xuống một trăm được không?',en:'Can you bring it down to one hundred?'},{who:'v',av:'🛍️',vn:'Thôi được, lấy đi nha.',en:'Fine, go ahead and take it.'}],scene:'🛍️ Bến Thành Market — Hồ Chí Minh',words:[{vn:'Bớt',en:'To reduce / lower (price)',ipa:'/ɓot/',tone:'Sắc',sample:'<span>Bớt</span> cho tôi một chút đi. — Reduce the price for me a little.'},{vn:'Cái kia',en:'That one (over there)',ipa:'/kaj kia/',tone:'Sắc + Ngang',sample:'Cho tôi xem <span>cái kia</span>. — Let me see that one over there.'}],grammar:[{point:'Bớt xuống — "Bring the price down"',rule:'"Bớt" (reduce) + "xuống" (downward direction) combines to mean specifically reducing a price. It\'s the key bargaining phrase.',vn:'Bớt xuống một trăm được không?',en:'Can you bring it down to one hundred?',chips:['Bớt = reduce','Xuống = downward','Price negotiation']},{point:'[Noun] + ơi — Calling someone\'s attention',rule:'Add "ơi" after a title or pronoun to call someone\'s attention, like "hey" or "excuse me". Very natural and informal.',vn:'Cô ơi!',en:'Miss! / Hey!',chips:['Ơi = hey/calling','After title/pronoun','Attention-getting']}]},
+        {title:'Coffee Shop Slang',diff:'Elementary',diffColor:'#D97706',lines:5,chat:[{who:'v',av:'☕',vn:'Bạn gọi gì?',en:'What are you ordering?'},{who:'u',av:'🧑',vn:'Một bạc xỉu nóng.',en:'One hot white coffee.'},{who:'v',av:'☕',vn:'Đường nhiều hay ít?',en:'More or less sugar?'},{who:'u',av:'🧑',vn:'Vừa thôi. Có WiFi không?',en:'Just right. Is there WiFi?'},{who:'v',av:'☕',vn:'Có, mật khẩu là "xinchao123".',en:'Yes, the password is "xinchao123".'}],scene:'☕ Cà Phê Vỉa Hè — Hồ Chí Minh',words:[{vn:'Bạc xỉu',en:'Vietnamese white coffee (HCM)',ipa:'/ɓak sɪw/',tone:'Nặng + Hỏi',sample:'<span>Bạc xỉu</span> là cà phê sữa ít cà phê. — Bạc xỉu is milk coffee with less coffee.'},{vn:'Mật khẩu',en:'Password / secret code',ipa:'/mat xaw/',tone:'Nặng + Hỏi',sample:'<span>Mật khẩu</span> WiFi là gì? — What is the WiFi password?'},{vn:'Vừa thôi',en:'Just right / moderate amount',ipa:'/vɯə tʰoj/',tone:'Huyền + Ngang',sample:'Ngọt <span>vừa thôi</span> là được. — Moderately sweet is fine.'}],grammar:[{point:'Vừa thôi — "Just right / not too much"',rule:'"Vừa" alone means "just right/fitting" and "thôi" limits it further. Together they express a preference for moderation.',vn:'Vừa thôi.',en:'Just the right amount.',chips:['Vừa = just right','Thôi = limiting particle','Expressing preference']}]},
+        {title:'At a Rooftop Bar',diff:'Intermediate',diffColor:'#185FA5',lines:4,chat:[{who:'v',av:'🍹',vn:'Anh uống gì tối nay?',en:'What are you drinking tonight?'},{who:'u',av:'🧑',vn:'Bia Sài Gòn một chai.',en:'One bottle of Saigon beer.'},{who:'v',av:'🍹',vn:'Ướp lạnh chưa?',en:'Is it cold yet?'},{who:'u',av:'🧑',vn:'Có đá vào luôn cho tôi.',en:'Put ice in it for me directly.'}],scene:'🍹 Rooftop Bar — Bùi Viện Walking Street',words:[{vn:'Chai',en:'Bottle (classifier)',ipa:'/tɕaj/',tone:'Ngang',sample:'Cho tôi hai <span>chai</span> nước. — Give me two bottles of water.'},{vn:'Lạnh',en:'Cold',ipa:'/laŋ/',tone:'Nặng',sample:'Nước <span>lạnh</span> hay nước ấm? — Cold or warm water?'}],grammar:[{point:'[Verb] + luôn — "Right away / straight to it"',rule:'"Luôn" after a verb means to do something immediately, directly, or to go ahead and do it without hesitation.',vn:'Có đá vào luôn cho tôi.',en:'Go ahead and put ice in it for me.',chips:['Luôn = right away/directly','After verb','Southern casual']}]},
+        {title:'Shopping at Vincom',diff:'Intermediate',diffColor:'#185FA5',lines:4,chat:[{who:'v',av:'🏬',vn:'Anh cần tìm gì?',en:'What are you looking for?'},{who:'u',av:'🧑',vn:'Quần jeans size 32.',en:'Jeans in size 32.'},{who:'v',av:'🏬',vn:'Anh thử phòng số 3 nhé.',en:'Please try fitting room number 3.'},{who:'u',av:'🧑',vn:'Quần này bị dài quá. Ngắn hơn không?',en:'These jeans are too long. Do you have shorter?'}],scene:'🏬 Vincom Center — Hồ Chí Minh',words:[{vn:'Tìm',en:'To look for / search',ipa:'/tim/',tone:'Huyền',sample:'Tôi đang <span>tìm</span> nhà vệ sinh. — I am looking for the bathroom.'},{vn:'Quá',en:'Too (excessive)',ipa:'/kwaː/',tone:'Sắc',sample:'Cái này đắt <span>quá</span>! — This is too expensive!'}],grammar:[{point:'[Adjective] + quá — "Too [adjective]"',rule:'"Quá" after an adjective means "too much" or excessively. It expresses that something exceeds acceptable limits.',vn:'Dài quá.',en:'Too long.',chips:['Quá = too much','After adjective','Excess expression']}]},
+        {title:'Visiting a Pagoda',diff:'Upper-Intermediate',diffColor:'#993C1D',lines:4,chat:[{who:'v',av:'🏯',vn:'Khách muốn thắp hương không?',en:'Would you like to light incense?'},{who:'u',av:'🧑',vn:'Vâng. Làm thế nào ạ?',en:'Yes. How do I do it?'},{who:'v',av:'🏯',vn:'Cầm hương, cúi đầu ba lần.',en:'Hold the incense, bow three times.'},{who:'u',av:'🧑',vn:'Cảm ơn đã chỉ dẫn.',en:'Thank you for the guidance.'}],scene:'🏯 Chùa Bà Thiên Hậu — Chợ Lớn',words:[{vn:'Thắp hương',en:'To light incense',ipa:'/tap hɯəŋ/',tone:'Sắc + Ngang',sample:'Mọi người <span>thắp hương</span> cầu bình an. — People light incense to pray for peace.'},{vn:'Cúi đầu',en:'To bow',ipa:'/kuj ɗəw/',tone:'Hỏi + Huyền',sample:'<span>Cúi đầu</span> để tỏ lòng tôn trọng. — Bow to show respect.'}],grammar:[{point:'Làm thế nào? — "How does one do it?"',rule:'"Làm thế nào?" is the go-to question for asking how to do something. It can stand alone or precede a verb.',vn:'Làm thế nào ạ?',en:'How do I do it? (respectfully)',chips:['Làm = do','Thế nào = in what way','How-to question']}]},
+        {title:'Doctor\'s Appointment',diff:'Upper-Intermediate',diffColor:'#993C1D',lines:5,chat:[{who:'v',av:'👨‍⚕️',vn:'Anh bị gì vậy?',en:'What\'s wrong with you?'},{who:'u',av:'🧑',vn:'Tôi bị đau bụng từ hôm qua.',en:'I\'ve had a stomachache since yesterday.'},{who:'v',av:'👨‍⚕️',vn:'Có nôn hay tiêu chảy không?',en:'Any vomiting or diarrhea?'},{who:'u',av:'🧑',vn:'Có hơi buồn nôn.',en:'A little nauseous.'},{who:'v',av:'👨‍⚕️',vn:'Uống thuốc này trước khi ăn.',en:'Take this medicine before eating.'}],scene:'🏥 Phòng Khám — Hồ Chí Minh',words:[{vn:'Đau bụng',en:'Stomachache',ipa:'/ɗaw ɓuŋ/',tone:'Ngang + Nặng',sample:'Tôi bị <span>đau bụng</span> cả ngày. — I\'ve had a stomachache all day.'},{vn:'Buồn nôn',en:'Nauseous / feel like vomiting',ipa:'/ɓuən non/',tone:'Huyền + Ngang',sample:'Tôi thấy <span>buồn nôn</span> khi đi tàu. — I feel nauseous on boats.'},{vn:'Trước khi',en:'Before (doing something)',ipa:'/tɾɯək xi/',tone:'Sắc + Ngang',sample:'Uống thuốc <span>trước khi</span> ăn. — Take medicine before eating.'}],grammar:[{point:'Từ + [time] — "Since [time]"',rule:'"Từ" means "from/since" and indicates the starting point of an action or condition that is still ongoing.',vn:'Từ hôm qua.',en:'Since yesterday.',chips:['Từ = since/from','Ongoing condition','Time reference']},{point:'Trước khi vs sau khi — Before vs after',rule:'"Trước khi" (before) and "sau khi" (after) connect two events in time. Both go before the verb they modify.',vn:'Uống thuốc trước khi ăn.',en:'Take medicine before eating.',chips:['Trước khi = before','Sau khi = after','Time connectors']}]},
+        {title:'Talking About Family',diff:'Upper-Intermediate',diffColor:'#993C1D',lines:5,chat:[{who:'v',av:'👩',vn:'Gia đình bạn ở đâu?',en:'Where is your family from?'},{who:'u',av:'🧑',vn:'Gia đình tôi ở Anh. Còn bạn?',en:'My family is in England. And yours?'},{who:'v',av:'👩',vn:'Tôi người Sài Gòn gốc. Ba đời rồi.',en:'I\'m Saigon-born. Third generation.'},{who:'u',av:'🧑',vn:'Gia đình bạn đông không?',en:'Is your family big?'},{who:'v',av:'👩',vn:'Đông lắm, bảy người!',en:'Very big, seven people!'}],scene:'☕ Neighbourhood Café — Phú Nhuận',words:[{vn:'Gia đình',en:'Family',ipa:'/za ɗiŋ/',tone:'Ngang + Huyền',sample:'<span>Gia đình</span> là điều quan trọng nhất. — Family is the most important thing.'},{vn:'Gốc',en:'Origin / roots',ipa:'/gok/',tone:'Sắc',sample:'Tôi người Huế <span>gốc</span>. — I am originally from Huế.'},{vn:'Đông',en:'Many / numerous (people)',ipa:'/ɗoŋ/',tone:'Ngang',sample:'Chợ hôm nay <span>đông</span> quá. — The market is very crowded today.'}],grammar:[{point:'[Adjective] + lắm — Emphatic "very"',rule:'In Southern Vietnamese, "lắm" comes after the adjective for emphasis. It\'s more emotional and expressive than "rất" (which precedes).',vn:'Đông lắm!',en:'So many! Very crowded!',chips:['Lắm = very emphatic','After adjective','Southern usage']},{point:'Ba đời — Counting generations',rule:'"Đời" is the classifier for generations. "Ba đời" = three generations. This is a common way to express how long a family has lived somewhere.',vn:'Ba đời rồi.',en:'Three generations already.',chips:['Đời = generation','Ba = three','Heritage expression']}]},
+      ]
+    }
+  ]
+};
+
+let curProv=0,curChap=0;
+
+function setProvince(p){
+  curProv=p;curChap=0;
+  document.querySelectorAll('.prov-btn').forEach((b,i)=>b.classList.toggle('active',i===p));
+  renderAll();
+}
+
+function setChapter(c){
+  curChap=c;
+  document.querySelectorAll('.chbtn').forEach((b,i)=>b.classList.toggle('active',i===c));
+  renderBody();
+}
+
+function renderAll(){
+  renderHero();
+  renderBody();
+}
+
+function renderHero(){
+  const prov=DATA.provinces[curProv];
+  const ch=prov.chapters[curChap];
+  let chBtns='';
+  prov.chapters.forEach((c,i)=>{
+    const done=i<curChap;
+    const active=i===curChap;
+    chBtns+=`<button class="chbtn${active?' active':''}${done?' done':''}" onclick="setChapter(${i})">${i+1}</button>`;
+  });
+  document.getElementById('mainContent').querySelector('#heroBox').innerHTML=`
+    <div class="hero-top">
+      <div>
+        <div class="hero-prov">${prov.emoji} ${prov.name} · ${prov.dialect}</div>
+        <div class="hero-ch">Chapter ${curChap+1}</div>
+        <div class="hero-title">${ch.title}</div>
+        <div style="margin-top:8px">
+          <span class="hero-diff" style="background:${ch.diffColor}22;border-color:${ch.diffColor}88;color:#fff">${ch.diff}</span>
+          <span style="margin-left:10px;font-size:12px;color:rgba(255,255,255,.4)">${ch.lines} exchanges</span>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">chapters</div>
+        <div class="chaps">${chBtns}</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderBody(){
+  const prov=DATA.provinces[curProv];
+  const ch=prov.chapters[curChap];
+  const bodyEl=document.getElementById('mainContent').querySelector('#bodyContent');
+  bodyEl.innerHTML='';
+
+  let chatHtml='';
+  ch.chat.forEach(msg=>{
+    const isV=msg.who==='v';
+    chatHtml+=`
+      <div class="cm ${isV?'':'r'} fade-in">
+        <div class="av">${msg.av}</div>
+        <div>
+          <div class="bbl ${isV?'v':'u'}">${msg.vn}</div>
+          <div class="tr">"${msg.en}"</div>
+        </div>
+      </div>`;
+  });
+
+  let wordsHtml='';
+  ch.words.forEach(w=>{
+    wordsHtml+=`
+      <div class="word-card fade-in">
+        <div class="word-vn">${w.vn}</div>
+        <div>
+          <div class="word-en">${w.en}</div>
+          <div class="word-ipa">${w.ipa}</div>
+          <div class="word-tone">🎵 ${w.tone}</div>
+          <div class="word-sample">${w.sample}</div>
+        </div>
+      </div>`;
+  });
+
+  let gramHtml='';
+  ch.grammar.forEach((g,i)=>{
+    const chips=(g.chips||[]).map(c=>`<span class="chip" style="background:${['#FFF0E8','#E0F8FF','#FFFDE0'][i%3]}">${c}</span>`).join('');
+    gramHtml+=`
+      <div class="gram-card fade-in">
+        <div class="gram-hdr">
+          <div class="gram-num">${i+1}</div>
+          <div class="gram-point">${g.point}</div>
+        </div>
+        <div class="gram-body">
+          <div class="gram-rule">${g.rule}</div>
+          <div class="gram-ex">
+            <div class="gram-vn">${g.vn}</div>
+            <div class="gram-en">${g.en}</div>
+          </div>
+          ${chips?`<div class="gram-annot">${chips}</div>`:''}
+        </div>
+      </div>`;
+  });
+
+  bodyEl.innerHTML=`
+    <div>
+      <div class="sec-hd">
+        <span class="sec-tag mono">// Daily Dialogue</span>
+        <span class="sec-title">${ch.scene}</span>
+      </div>
+      <div class="chat-wrap">
+        <div class="chat-hdr"><span class="chat-dot"></span>${ch.scene}</div>
+        <div class="chat-body">${chatHtml}</div>
+        <div class="chat-inp">
+          <input class="cinp" type="text" placeholder="Type your Vietnamese reply...">
+          <button class="send-btn">Send 🍜</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-hd">
+        <span class="sec-tag mono">// Daily Words</span>
+        <span class="sec-title">${ch.words.length} new words this chapter</span>
+      </div>
+      <div class="words-grid">${wordsHtml}</div>
+    </div>
+
+    <div>
+      <div class="sec-hd">
+        <span class="sec-tag mono">// Daily Grammar</span>
+        <span class="sec-title">${ch.grammar.length} grammar point${ch.grammar.length>1?'s':''} to master</span>
+      </div>
+      <div class="gram-list">${gramHtml}</div>
+    </div>
+
+    <div style="background:var(--y);border:var(--bd);border-radius:20px;padding:22px;box-shadow:var(--sh);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:18px">Chapter ${curChap+1} complete? 🎉</div>
+        <div style="font-size:13px;color:var(--mu);margin-top:3px">Finish to unlock +120 XP and the next chapter</div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        ${curChap>0?`<button class="btn bo" onclick="setChapter(${curChap-1})">← Prev Chapter</button>`:''}
+        ${curChap<9?`<button class="btn bp" onclick="setChapter(${curChap+1})">Next Chapter → (+120 XP)</button>`:'<button class="btn bp">🏆 Province Complete!</button>'}
+      </div>
+    </div>
+  `;
+}
+
+const mc=document.getElementById('mainContent');
+mc.innerHTML=`
+  <div id="heroBox" class="hero-box"></div>
+  <div id="bodyContent" style="display:flex;flex-direction:column;gap:32px"></div>
+`;
+renderAll();
+</script>
