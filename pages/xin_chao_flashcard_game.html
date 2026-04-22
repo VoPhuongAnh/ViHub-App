@@ -1,0 +1,626 @@
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5/800.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5/900.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/400.css">
+<style>
+:root{
+  --p:#FF7A2F;--s:#00D4FF;--y:#FFD600;--ok:#16A34A;
+  --bg:#F8F6F1;--ink:#111827;--mu:#64748B;
+  --bd:2.5px solid #111827;--sh:4px 4px 0 #111827;--sh2:6px 6px 0 #111827;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.1}
+.jb{font-family:'JetBrains Mono',monospace}
+
+/* NAV */
+nav{background:var(--ink);border-bottom:var(--bd);padding:12px 0;position:sticky;top:0;z-index:100}
+.nw{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:18px;color:#fff;display:flex;align-items:center;gap:8px;cursor:pointer}
+.lchip{background:var(--p);border:2px solid rgba(255,255,255,.3);border-radius:8px;padding:1px 9px;font-size:16px;line-height:1.4;box-shadow:3px 3px 0 rgba(255,255,255,.12)}
+.nl{display:flex;gap:4px;list-style:none}
+.nl a{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;padding:6px 13px;border-radius:999px;transition:all .15s}
+.nl a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nl a.active{color:var(--ink);background:var(--y)}
+.nav-xp{display:flex;align-items:center;gap:8px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;color:#fff}
+.xp-pill{background:var(--p);border:2px solid rgba(255,255,255,.2);border-radius:999px;padding:4px 12px;font-size:12px}
+
+/* SCREENS */
+.screen{display:none;animation:fadeIn .35s ease both}
+.screen.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes popIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+@keyframes xpPop{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-60px) scale(1.3)}}
+@keyframes comboPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes confettiFall{from{transform:translateY(-20px) rotate(0);opacity:1}to{transform:translateY(300px) rotate(720deg);opacity:0}}
+
+/* ─── SCREEN 1: DECK SELECT ─── */
+.deck-page{max-width:1000px;margin:0 auto;padding:36px 24px 60px}
+.deck-hero{text-align:center;margin-bottom:40px}
+.deck-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--p);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+.deck-title{font-size:clamp(32px,5vw,54px);font-weight:900;letter-spacing:-2px;margin-bottom:10px}
+.deck-sub{font-size:15px;color:var(--mu);max-width:440px;margin:0 auto}
+.deck-filter{display:flex;gap:8px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.df-btn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:12px;padding:7px 16px;border:var(--bd);border-radius:999px;background:#fff;cursor:pointer;box-shadow:3px 3px 0 #111;transition:all .12s}
+.df-btn:hover,.df-btn.active{background:var(--ink);color:#fff;transform:translate(-1px,-1px);box-shadow:4px 4px 0 #111}
+.decks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.dcard{background:#fff;border:var(--bd);border-radius:22px;overflow:hidden;box-shadow:var(--sh);cursor:pointer;transition:transform .18s,box-shadow .18s;position:relative}
+.dcard:hover{transform:translate(-3px,-3px);box-shadow:var(--sh2)}
+.dcard-banner{padding:22px 20px;border-bottom:var(--bd);position:relative;overflow:hidden}
+.dcard-ico{font-size:42px;margin-bottom:8px;display:block}
+.dcard-name{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:18px;margin-bottom:4px}
+.dcard-prov{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;opacity:.6}
+.dcard-deco{position:absolute;right:-12px;bottom:-12px;font-size:64px;opacity:.12;pointer-events:none;transform:rotate(-15deg)}
+.dcard-body{padding:16px 20px}
+.dcard-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.dmeta{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;border:2px solid var(--ink);border-radius:7px;padding:3px 9px}
+.dcard-bar-bg{background:#e5e7eb;border:2px solid var(--ink);border-radius:999px;height:8px;overflow:hidden;margin-bottom:6px}
+.dcard-bar{height:100%;border-radius:999px}
+.dcard-progress{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);font-weight:700}
+.start-btn{margin-top:14px;width:100%;padding:11px;border:var(--bd);border-radius:999px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:14px;cursor:pointer;box-shadow:3px 3px 0 #111;transition:all .12s}
+.start-btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 #111}
+
+/* ─── SCREEN 2: GAME ─── */
+.game-page{min-height:calc(100vh - 54px);display:flex;flex-direction:column}
+
+/* HUD */
+.hud{background:var(--ink);border-bottom:var(--bd);padding:12px 0}
+.hud-inner{max-width:1000px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
+.hud-left{display:flex;flex-direction:column;gap:6px}
+.hud-deck{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.5px}
+.prog-row{display:flex;align-items:center;gap:10px}
+.prog-dots{display:flex;gap:4px}
+.pdot{width:22px;height:8px;border-radius:4px;border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);transition:all .3s}
+.pdot.correct{background:var(--ok);border-color:var(--ok)}
+.pdot.wrong{background:#DC2626;border-color:#DC2626}
+.pdot.active{background:var(--y);border-color:var(--y);animation:comboPulse 1s ease-in-out infinite}
+.prog-count{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:rgba(255,255,255,.4)}
+.hud-center{}
+.combo-badge{background:var(--p);border:2.5px solid rgba(255,255,255,.25);border-radius:14px;padding:8px 18px;text-align:center;box-shadow:0 0 20px rgba(255,122,47,.4);transition:all .3s}
+.combo-badge.hot{background:var(--y);box-shadow:0 0 20px rgba(255,214,0,.5)}
+.combo-badge.cold{background:rgba(255,255,255,.08);box-shadow:none;border-color:rgba(255,255,255,.1)}
+.combo-num{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:26px;color:#fff;line-height:1}
+.combo-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1.5px}
+.combo-badge.hot .combo-num{color:var(--ink)}
+.combo-badge.hot .combo-lbl{color:rgba(17,24,39,.6)}
+.hud-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.xp-count{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:28px;color:var(--y);letter-spacing:-1px;line-height:1}
+.xp-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:1.5px}
+.quit-btn{position:absolute;top:0;right:24px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:12px;color:rgba(255,255,255,.3);cursor:pointer;padding:4px 8px;border-radius:6px;transition:color .15s}
+.quit-btn:hover{color:rgba(255,255,255,.7)}
+
+/* CARD ARENA */
+.arena{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:28px;position:relative}
+.kb-hint{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu);text-align:center}
+.kb-hint span{background:#fff;border:2px solid var(--ink);border-radius:5px;padding:1px 7px;font-size:10px;box-shadow:2px 2px 0 #111}
+
+/* 3D CARD */
+.persp{perspective:1400px;width:min(480px,90vw);cursor:pointer}
+.card-inner{width:100%;height:280px;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.card-inner.flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border:var(--bd);border-radius:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;box-shadow:var(--sh2)}
+.face.front{background:#fff}
+.face.back{background:var(--y);transform:rotateY(180deg)}
+.card-inner.shake{animation:shake .4s ease both}
+.card-inner.correct-flash .face.back{box-shadow:var(--sh2),0 0 0 4px var(--ok)}
+.card-inner.wrong-flash .face.back{box-shadow:var(--sh2),0 0 0 4px #DC2626}
+
+/* FRONT face content */
+.f-cat{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+.f-word{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:clamp(44px,10vw,72px);color:var(--p);letter-spacing:-2px;line-height:1;margin-bottom:10px;text-align:center}
+.f-tone{display:inline-flex;align-items:center;gap:6px;background:var(--y);border:2.5px solid var(--ink);border-radius:10px;padding:5px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12px;margin-bottom:8px}
+.f-hint{font-size:13px;color:var(--mu);font-weight:500;margin-top:4px}
+
+/* BACK face content */
+.b-en{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:clamp(26px,6vw,40px);color:var(--ink);letter-spacing:-1px;margin-bottom:6px;text-align:center}
+.b-ipa{font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--mu);margin-bottom:12px}
+.b-ex{font-size:13px;color:#374151;line-height:1.55;text-align:center;background:rgba(255,255,255,.6);border-radius:12px;padding:9px 14px;border-left:3.5px solid var(--p);text-align:left;max-width:340px}
+.b-ex strong{color:var(--p)}
+
+/* RATING BUTTONS */
+.ratings{display:flex;gap:10px;width:min(480px,90vw);opacity:0;pointer-events:none;transition:opacity .25s}
+.ratings.visible{opacity:1;pointer-events:all}
+.rbtn{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 8px;border:var(--bd);border-radius:18px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;box-shadow:var(--sh);transition:transform .12s,box-shadow .12s;position:relative;overflow:hidden}
+.rbtn:hover{transform:translate(-2px,-3px);box-shadow:var(--sh2)}
+.rbtn:active{transform:translate(1px,1px);box-shadow:2px 2px 0 #111}
+.rbtn-ico{font-size:20px}
+.rbtn-xp{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;opacity:.7}
+.r-again{background:#FEE2E2;border-color:#DC2626;color:#991B1B}
+.r-again .rbtn-xp{color:#DC2626}
+.r-hard{background:#FFF0E8;border-color:var(--p);color:#993C1D}
+.r-hard .rbtn-xp{color:var(--p)}
+.r-good{background:#DCFCE7;border-color:var(--ok);color:#166534}
+.r-good .rbtn-xp{color:var(--ok)}
+.r-easy{background:#e0f8ff;border-color:var(--s);color:#0090B0}
+.r-easy .rbtn-xp{color:var(--s)}
+
+/* XP POP */
+.xp-pop{position:fixed;font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:22px;pointer-events:none;z-index:999;animation:xpPop .9s ease forwards}
+
+/* ─── SCREEN 3: RESULTS ─── */
+.results-page{max-width:700px;margin:0 auto;padding:40px 24px 60px;text-align:center}
+.results-emoji{font-size:72px;margin-bottom:16px;display:block;animation:popIn .5s cubic-bezier(.17,.67,.35,1.4) both}
+.results-title{font-size:clamp(36px,6vw,58px);font-weight:900;letter-spacing:-2px;margin-bottom:8px}
+.results-sub{font-size:16px;color:var(--mu);margin-bottom:36px}
+.xp-reveal{background:var(--p);border:var(--bd);border-radius:24px;padding:28px;box-shadow:var(--sh2);margin-bottom:24px;animation:slideUp .5s .2s ease both;opacity:0;animation-fill-mode:both}
+.xp-big{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:64px;color:#fff;letter-spacing:-3px;line-height:1}
+.xp-sub{font-size:14px;color:rgba(255,255,255,.7);margin-top:4px;font-weight:600}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;animation:slideUp .5s .35s ease both;opacity:0;animation-fill-mode:both}
+.stat-box{background:#fff;border:var(--bd);border-radius:18px;padding:18px 14px;box-shadow:var(--sh)}
+.stat-box-n{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:34px;letter-spacing:-1px;margin-bottom:2px}
+.stat-box-l{font-size:11px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.5px}
+.breakdown{background:#fff;border:var(--bd);border-radius:20px;padding:20px;box-shadow:3px 3px 0 #111;margin-bottom:24px;animation:slideUp .5s .5s ease both;opacity:0;animation-fill-mode:both;text-align:left}
+.bk-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:15px;margin-bottom:14px}
+.bk-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1.5px solid #f1f5f9}
+.bk-row:last-child{border-bottom:none}
+.bk-word{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:15px;color:var(--p);min-width:90px}
+.bk-en{font-size:13px;color:var(--mu);flex:1;font-weight:500}
+.bk-rating{font-size:11px;font-weight:700;border:2px solid var(--ink);border-radius:6px;padding:2px 8px}
+.results-ctas{display:flex;gap:12px;justify-content:center;animation:slideUp .5s .65s ease both;opacity:0;animation-fill-mode:both;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;border-radius:999px;border:var(--bd);cursor:pointer;transition:transform .1s,box-shadow .1s;font-size:14px;padding:13px 28px;text-decoration:none}
+.btn:hover{transform:translate(-2px,-2px)}
+.btn:active{transform:translate(1px,1px);box-shadow:none!important}
+.bp{background:var(--p);color:#fff;box-shadow:var(--sh)}
+.bp:hover{box-shadow:var(--sh2)}
+.bo{background:#fff;color:var(--ink);box-shadow:var(--sh)}
+.bo:hover{box-shadow:var(--sh2)}
+.by{background:var(--y);color:var(--ink);box-shadow:var(--sh)}
+.by:hover{box-shadow:var(--sh2)}
+
+/* confetti */
+.confetto{position:fixed;width:10px;height:10px;border-radius:2px;pointer-events:none;z-index:1000;animation:confettiFall 2s ease-in forwards}
+
+/* deck glow outlines for active */
+.dcard:nth-child(1) .dcard-banner{background:linear-gradient(135deg,#FFF0E8,#fff)}
+.dcard:nth-child(2) .dcard-banner{background:linear-gradient(135deg,#E0F8FF,#fff)}
+.dcard:nth-child(3) .dcard-banner{background:linear-gradient(135deg,#FFFDE0,#fff)}
+.dcard:nth-child(4) .dcard-banner{background:linear-gradient(135deg,#DCFCE7,#fff)}
+.dcard:nth-child(5) .dcard-banner{background:linear-gradient(135deg,#FFF0E8,#fff)}
+.dcard:nth-child(6) .dcard-banner{background:linear-gradient(135deg,#F3E8FF,#fff)}
+
+@media(max-width:700px){
+  .decks-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-row{grid-template-columns:repeat(3,1fr)}
+  .hud-inner{grid-template-columns:1fr auto}
+  .hud-right{display:none}
+}
+</style>
+
+<!-- NAV -->
+<nav>
+  <div class="nw" style="position:relative">
+    <div class="logo"><span class="lchip">🍜</span>XinChào</div>
+    <ul class="nl">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Dialogues</a></li>
+      <li><a href="#" class="active">Flashcards</a></li>
+      <li><a href="#">Progress</a></li>
+    </ul>
+    <div class="nav-xp">⚡ <span class="xp-pill" id="navXp">720 XP</span></div>
+  </div>
+</nav>
+
+<!-- SCREEN 1: DECK SELECT -->
+<div class="screen active" id="sDeck">
+  <div class="deck-page">
+    <div class="deck-hero">
+      <div class="deck-eyebrow jb">// choose your deck</div>
+      <h1 class="deck-title">What will you<br><span style="color:var(--p)">drill today?</span></h1>
+      <p class="deck-sub">Each deck is 10 cards from real dialogues. Earn XP, build combos, never forget.</p>
+      <div class="deck-filter">
+        <button class="df-btn active">All Decks</button>
+        <button class="df-btn">🏛️ Hà Nội</button>
+        <button class="df-btn">🏖️ Đà Nẵng</button>
+        <button class="df-btn">🌆 HCM City</button>
+        <button class="df-btn">⭐ My Weak Words</button>
+      </div>
+    </div>
+    <div class="decks-grid" id="decksGrid"></div>
+  </div>
+</div>
+
+<!-- SCREEN 2: GAME -->
+<div class="screen" id="sGame">
+  <div class="game-page">
+    <!-- HUD -->
+    <div class="hud">
+      <div class="hud-inner" style="position:relative">
+        <div class="hud-left">
+          <div class="hud-deck jb" id="hudDeckName">Hà Nội — Food & Drink</div>
+          <div class="prog-row">
+            <div class="prog-dots" id="progDots"></div>
+            <div class="prog-count jb" id="progCount">1 / 10</div>
+          </div>
+        </div>
+        <div class="hud-center">
+          <div class="combo-badge cold" id="comboBadge">
+            <div class="combo-num" id="comboNum">×1</div>
+            <div class="combo-lbl">Combo</div>
+          </div>
+        </div>
+        <div class="hud-right">
+          <div class="xp-count" id="sessionXp">0</div>
+          <div class="xp-lbl">Session XP</div>
+        </div>
+        <div class="quit-btn" onclick="goScreen('sDeck')">✕ Quit</div>
+      </div>
+    </div>
+
+    <!-- ARENA -->
+    <div class="arena">
+      <!-- card -->
+      <div class="persp" id="cardWrap" onclick="flipCard()">
+        <div class="card-inner" id="cardInner">
+          <div class="face front" id="faceFront">
+            <div class="f-cat jb" id="fCat">food & drink</div>
+            <div class="f-word" id="fWord">Phở</div>
+            <div class="f-tone" id="fTone">🎵 Huyền (falling)</div>
+            <div class="f-hint">tap card · or press <span style="font-family:'JetBrains Mono',monospace;font-size:11px;background:#f1f5f9;border:2px solid #111;border-radius:4px;padding:1px 6px">space</span> to flip</div>
+          </div>
+          <div class="face back" id="faceBack">
+            <div class="b-en" id="bEn">Beef Noodle Soup</div>
+            <div class="b-ipa jb" id="bIpa">/fəː³³/</div>
+            <div class="b-ex" id="bEx">Tôi ăn <strong>phở</strong> mỗi sáng. — I eat phở every morning.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- rating buttons -->
+      <div class="ratings" id="ratings">
+        <button class="rbtn r-again" onclick="rate('again')"><span class="rbtn-ico">✕</span>Again<span class="rbtn-xp">+0 XP</span></button>
+        <button class="rbtn r-hard" onclick="rate('hard')"><span class="rbtn-ico">😓</span>Hard<span class="rbtn-xp">+5 XP</span></button>
+        <button class="rbtn r-good" onclick="rate('good')"><span class="rbtn-ico">✓</span>Good<span class="rbtn-xp" id="rGoodXp">+10 XP</span></button>
+        <button class="rbtn r-easy" onclick="rate('easy')"><span class="rbtn-ico">⚡</span>Easy<span class="rbtn-xp" id="rEasyXp">+15 XP</span></button>
+      </div>
+
+      <div class="kb-hint">
+        <span>1</span> Again &nbsp;·&nbsp; <span>2</span> Hard &nbsp;·&nbsp; <span>3</span> Good &nbsp;·&nbsp; <span>4</span> Easy
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 3: RESULTS -->
+<div class="screen" id="sResults">
+  <div class="results-page">
+    <span class="results-emoji" id="resEmoji">🎉</span>
+    <h2 class="results-title" id="resTitle">Session Complete!</h2>
+    <p class="results-sub" id="resSub">You crushed 10 cards. Here's your breakdown.</p>
+
+    <div class="xp-reveal">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px">XP Earned this session</div>
+      <div class="xp-big" id="resXpBig">+120</div>
+      <div class="xp-sub" id="resXpSub">Total: 840 XP · Level 5 · 160 to next level</div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-box-n" id="resCorrect" style="color:var(--ok)">8</div><div class="stat-box-l">Correct</div></div>
+      <div class="stat-box"><div class="stat-box-n" id="resAccuracy" style="color:var(--p)">80%</div><div class="stat-box-l">Accuracy</div></div>
+      <div class="stat-box"><div class="stat-box-n" id="resBestCombo" style="color:var(--y)">×3</div><div class="stat-box-l">Best Combo</div></div>
+    </div>
+
+    <div class="breakdown">
+      <div class="bk-title">📋 Card Breakdown</div>
+      <div id="bkList"></div>
+    </div>
+
+    <div class="results-ctas">
+      <button class="btn bp" onclick="restartGame()">Play Again 🔁</button>
+      <button class="btn by" onclick="goScreen('sDeck')">Choose Deck 📇</button>
+      <button class="btn bo" onclick="goScreen('sDeck')">Back to Home</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const DECKS=[
+  {id:0,name:'Food & Drink',prov:'Hà Nội',emoji:'🍜',color:'#FF7A2F',done:6,total:10,diff:'Beginner',diffCol:'#16A34A',
+   cards:[
+    {vn:'Phở',en:'Beef Noodle Soup',ipa:'/fəː³³/',tone:'Huyền (falling)',cat:'food & drink',ex:'Tôi ăn <strong>phở</strong> mỗi sáng.'},
+    {vn:'Cà phê',en:'Coffee',ipa:'/ka feː/',tone:'Huyền (falling)',cat:'food & drink',ex:'<strong>Cà phê</strong> sữa đá rất ngon.'},
+    {vn:'Cơm',en:'Rice / Cooked rice',ipa:'/kom³³/',tone:'Ngang (level)',cat:'food & drink',ex:'Ăn <strong>cơm</strong> chưa?'},
+    {vn:'Nước',en:'Water / Liquid',ipa:'/nɯək/',tone:'Sắc (rising)',cat:'food & drink',ex:'Cho tôi một ly <strong>nước</strong>.'},
+    {vn:'Bún bò',en:'Beef Vermicelli',ipa:'/ɓun ɓo/',tone:'Huyền + Huyền',cat:'food & drink',ex:'<strong>Bún bò</strong> Huế rất cay.'},
+    {vn:'Bánh mì',en:'Vietnamese Sandwich',ipa:'/ɓajŋ mi/',tone:'Sắc + Huyền',cat:'food & drink',ex:'<strong>Bánh mì</strong> đặc biệt một cái.'},
+    {vn:'Rau',en:'Vegetables / Greens',ipa:'/ɾaw/',tone:'Ngang (level)',cat:'food & drink',ex:'Nhiều <strong>rau</strong> không?'},
+    {vn:'Thịt',en:'Meat',ipa:'/tit/',tone:'Nặng (heavy)',cat:'food & drink',ex:'<strong>Thịt</strong> bò hay thịt heo?'},
+    {vn:'Cay',en:'Spicy',ipa:'/kaj/',tone:'Ngang (level)',cat:'food & drink',ex:'Tôi không ăn được <strong>cay</strong>.'},
+    {vn:'Ngon',en:'Delicious / Tasty',ipa:'/ŋɔn/',tone:'Ngang (level)',cat:'food & drink',ex:'Phở này <strong>ngon</strong> lắm!'},
+  ]},
+  {id:1,name:'Getting Around',prov:'Hà Nội',emoji:'🛺',color:'#00D4FF',done:3,total:10,diff:'Beginner',diffCol:'#16A34A',
+   cards:[
+    {vn:'Đi đâu',en:'Where are you going?',ipa:'/ɗi ɗəw/',tone:'Various',cat:'transport',ex:'<strong>Đi đâu</strong> vậy anh?'},
+    {vn:'Xe ôm',en:'Motorbike taxi',ipa:'/se om/',tone:'Ngang + Ngang',cat:'transport',ex:'Bắt <strong>xe ôm</strong> đi chợ.'},
+    {vn:'Bao nhiêu',en:'How much / How many',ipa:'/ɓaːw ɲiəw/',tone:'Various',cat:'transport',ex:'<strong>Bao nhiêu</strong> tiền?'},
+    {vn:'Được',en:'OK / Can / Possible',ipa:'/ɗɯək/',tone:'Nặng (heavy)',cat:'transport',ex:'Ba mươi nghìn <strong>được</strong> không?'},
+    {vn:'Gần',en:'Near / Close',ipa:'/gan/',tone:'Huyền (falling)',cat:'transport',ex:'Ga tàu <strong>gần</strong> đây không?'},
+    {vn:'Xa',en:'Far / Distant',ipa:'/sa/',tone:'Ngang (level)',cat:'transport',ex:'Còn <strong>xa</strong> không?'},
+    {vn:'Rẽ phải',en:'Turn right',ipa:'/ze faːj/',tone:'Ngã + Hỏi',cat:'transport',ex:'Đến ngã tư <strong>rẽ phải</strong>.'},
+    {vn:'Thẳng',en:'Straight ahead',ipa:'/tʰaŋ/',tone:'Hỏi (dipping)',cat:'transport',ex:'Đi <strong>thẳng</strong> 200 mét.'},
+    {vn:'Dừng',en:'Stop',ipa:'/zuŋ/',tone:'Huyền (falling)',cat:'transport',ex:'<strong>Dừng</strong> ở đây thôi.'},
+    {vn:'Nhanh',en:'Fast / Quickly',ipa:'/ɲaŋ/',tone:'Ngang (level)',cat:'transport',ex:'Đi <strong>nhanh</strong> giúp tôi với.'},
+  ]},
+  {id:2,name:'Beach & Market',prov:'Đà Nẵng',emoji:'🥥',color:'#FFD600',done:0,total:10,diff:'Beginner',diffCol:'#16A34A',
+   cards:[
+    {vn:'Dừa',en:'Coconut',ipa:'/zɯə/',tone:'Huyền (falling)',cat:'beach & market',ex:'Uống <strong>dừa</strong> tươi mát lắm.'},
+    {vn:'Biển',en:'Sea / Beach',ipa:'/ɓiən/',tone:'Sắc (rising)',cat:'beach & market',ex:'Đi tắm <strong>biển</strong> không?'},
+    {vn:'Tươi',en:'Fresh',ipa:'/tɯəj/',tone:'Ngang (level)',cat:'beach & market',ex:'Cá này có <strong>tươi</strong> không?'},
+    {vn:'Mặc cả',en:'To bargain / Haggle',ipa:'/mak kaː/',tone:'Nặng + Hỏi',cat:'beach & market',ex:'Ở chợ có thể <strong>mặc cả</strong>.'},
+    {vn:'Bớt',en:'Reduce / Lower (price)',ipa:'/ɓot/',tone:'Sắc (rising)',cat:'beach & market',ex:'<strong>Bớt</strong> cho tôi chút đi.'},
+    {vn:'Lấy',en:'Take / I\'ll have',ipa:'/lay/',tone:'Hỏi (dipping)',cat:'beach & market',ex:'<strong>Lấy</strong> hai quả nha.'},
+    {vn:'Đắt',en:'Expensive',ipa:'/ɗat/',tone:'Sắc (rising)',cat:'beach & market',ex:'Cái này <strong>đắt</strong> quá!'},
+    {vn:'Rẻ',en:'Cheap / Affordable',ipa:'/ɾɛ/',tone:'Hỏi (dipping)',cat:'beach & market',ex:'Ở đây giá <strong>rẻ</strong> lắm.'},
+    {vn:'Vừa',en:'To fit / Just right',ipa:'/vɯə/',tone:'Huyền (falling)',cat:'beach & market',ex:'Cái áo này <strong>vừa</strong> không?'},
+    {vn:'Đẹp',en:'Beautiful / Pretty',ipa:'/ɗep/',tone:'Nặng (heavy)',cat:'beach & market',ex:'Cảnh <strong>đẹp</strong> lắm!'},
+  ]},
+  {id:3,name:'Survival Phrases',prov:'All Provinces',emoji:'🆘',color:'#16A34A',done:10,total:10,diff:'Beginner',diffCol:'#16A34A',
+   cards:[
+    {vn:'Xin chào',en:'Hello',ipa:'/sin tɕâːw/',tone:'Various tones',cat:'survival',ex:'<strong>Xin chào</strong>! Bạn khỏe không?'},
+    {vn:'Cảm ơn',en:'Thank you',ipa:'/kam²³³ ʔən/',tone:'Hỏi (dipping)',cat:'survival',ex:'<strong>Cảm ơn</strong> bạn nhiều!'},
+    {vn:'Xin lỗi',en:'Sorry / Excuse me',ipa:'/sin loj/',tone:'Ngang + Hỏi',cat:'survival',ex:'<strong>Xin lỗi</strong>, nhà vệ sinh ở đâu?'},
+    {vn:'Không',en:'No / Not',ipa:'/xoŋ/',tone:'Huyền (falling)',cat:'survival',ex:'<strong>Không</strong> cay ạ.'},
+    {vn:'Có',en:'Yes / Have / There is',ipa:'/ko/',tone:'Sắc (rising)',cat:'survival',ex:'<strong>Có</strong>, tôi muốn ăn.'},
+    {vn:'Giúp tôi',en:'Help me',ipa:'/zup toj/',tone:'Hỏi + Ngang',cat:'survival',ex:'<strong>Giúp tôi</strong> với!'},
+    {vn:'Bao nhiêu tiền',en:'How much does it cost?',ipa:'/ɓaːw ɲiəw tiən/',tone:'Various',cat:'survival',ex:'Cái này <strong>bao nhiêu tiền</strong>?'},
+    {vn:'Tôi không hiểu',en:'I don\'t understand',ipa:'/toj xoŋ hiəw/',tone:'Various',cat:'survival',ex:'<strong>Tôi không hiểu</strong>. Nói chậm hơn nhé.'},
+    {vn:'Ở đâu',en:'Where is...?',ipa:'/ʔəː ɗəw/',tone:'Various',cat:'survival',ex:'Bệnh viện <strong>ở đâu</strong>?'},
+    {vn:'Ngon lắm',en:'Very delicious!',ipa:'/ŋɔn lam/',tone:'Ngang + Nặng',cat:'survival',ex:'<strong>Ngon lắm</strong>! Cho thêm nữa đi.'},
+  ]},
+  {id:4,name:'Health & Body',prov:'Hà Nội',emoji:'💊',color:'#DC2626',done:1,total:10,diff:'Elementary',diffCol:'#D97706',
+   cards:[
+    {vn:'Đau',en:'Pain / Hurt',ipa:'/ɗaw/',tone:'Ngang (level)',cat:'health',ex:'Tôi bị <strong>đau</strong> đầu.'},
+    {vn:'Bị',en:'To suffer / Have (illness)',ipa:'/ɓi/',tone:'Nặng (heavy)',cat:'health',ex:'Tôi <strong>bị</strong> cảm.'},
+    {vn:'Thuốc',en:'Medicine',ipa:'/tʰuək/',tone:'Sắc (rising)',cat:'health',ex:'<strong>Thuốc</strong> này uống mấy viên?'},
+    {vn:'Viên',en:'Tablet / Pill',ipa:'/viən/',tone:'Ngang (level)',cat:'health',ex:'Uống hai <strong>viên</strong> mỗi lần.'},
+    {vn:'Dị ứng',en:'Allergy / Allergic',ipa:'/zi ʔɨŋ/',tone:'Nặng + Sắc',cat:'health',ex:'Tôi bị <strong>dị ứng</strong> với tôm.'},
+    {vn:'Nôn',en:'Vomit / Nauseous',ipa:'/non/',tone:'Ngang (level)',cat:'health',ex:'Tôi thấy buồn <strong>nôn</strong>.'},
+    {vn:'Sốt',en:'Fever',ipa:'/sot/',tone:'Sắc (rising)',cat:'health',ex:'Tôi bị <strong>sốt</strong> cao.'},
+    {vn:'Khỏe',en:'Healthy / Well',ipa:'/xwɛ/',tone:'Hỏi (dipping)',cat:'health',ex:'Bạn có <strong>khỏe</strong> không?'},
+    {vn:'Mệt',en:'Tired / Exhausted',ipa:'/met/',tone:'Nặng (heavy)',cat:'health',ex:'Tôi <strong>mệt</strong> quá rồi.'},
+    {vn:'Nghỉ',en:'Rest / Day off',ipa:'/ŋi/',tone:'Hỏi (dipping)',cat:'health',ex:'Tôi cần <strong>nghỉ</strong> ngơi.'},
+  ]},
+  {id:5,name:'Emotions & Social',prov:'HCM City',emoji:'😄',color:'#8B5CF6',done:0,total:10,diff:'Intermediate',diffCol:'#185FA5',
+   cards:[
+    {vn:'Vui',en:'Happy / Joyful',ipa:'/vuj/',tone:'Ngang (level)',cat:'emotions',ex:'Tôi rất <strong>vui</strong> khi gặp bạn.'},
+    {vn:'Buồn',en:'Sad',ipa:'/ɓuən/',tone:'Huyền (falling)',cat:'emotions',ex:'Sao bạn trông <strong>buồn</strong> vậy?'},
+    {vn:'Sợ',en:'Afraid / Scared',ipa:'/soː/',tone:'Hỏi (dipping)',cat:'emotions',ex:'Tôi <strong>sợ</strong> ma lắm!'},
+    {vn:'Yêu',en:'To love',ipa:'/iəw/',tone:'Ngang (level)',cat:'emotions',ex:'Tôi <strong>yêu</strong> Việt Nam.'},
+    {vn:'Ghét',en:'To hate / Dislike',ipa:'/yet/',tone:'Nặng (heavy)',cat:'emotions',ex:'Tôi <strong>ghét</strong> dậy sớm.'},
+    {vn:'Bạn bè',en:'Friends',ipa:'/ɓan ɓɛ/',tone:'Nặng + Huyền',cat:'emotions',ex:'<strong>Bạn bè</strong> tốt rất quý.'},
+    {vn:'Nhớ',en:'To miss / Remember',ipa:'/no/',tone:'Hỏi (dipping)',cat:'emotions',ex:'Tôi <strong>nhớ</strong> gia đình lắm.'},
+    {vn:'Thích',en:'To like / Enjoy',ipa:'/tik/',tone:'Sắc (rising)',cat:'emotions',ex:'Tôi <strong>thích</strong> ăn bánh mì.'},
+    {vn:'Muốn',en:'To want',ipa:'/muən/',tone:'Hỏi (dipping)',cat:'emotions',ex:'Bạn <strong>muốn</strong> đi đâu?'},
+    {vn:'Cần',en:'To need',ipa:'/kan/',tone:'Huyền (falling)',cat:'emotions',ex:'Tôi <strong>cần</strong> giúp đỡ.'},
+  ]},
+];
+
+// STATE
+let currentDeck=null,cardIdx=0,isFlipped=false,sessionXp=0,combo=1,
+    history=[],totalXp=720,bestCombo=1;
+
+function goScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── DECK SELECT ──
+function renderDecks(){
+  const el=document.getElementById('decksGrid');
+  el.innerHTML=DECKS.map(d=>{
+    const pct=Math.round(d.done/d.total*100);
+    const diffBg={Beginner:'#dcfce7',Elementary:'#FFF0E8',Intermediate:'#e0f8ff'}[d.diff]||'#f1f5f9';
+    return `<div class="dcard" onclick="startDeck(${d.id})">
+      <div class="dcard-banner">
+        <span class="dcard-ico">${d.emoji}</span>
+        <div class="dcard-name">${d.name}</div>
+        <div class="dcard-prov jb">${d.prov}</div>
+        <div class="dcard-deco">${d.emoji}</div>
+      </div>
+      <div class="dcard-body">
+        <div class="dcard-meta">
+          <span class="dmeta" style="background:${diffBg}">${d.diff}</span>
+          <span class="dmeta" style="background:var(--y)">📇 ${d.total} cards</span>
+          <span class="dmeta" style="background:#f1f5f9">⚡ +${d.total*12} XP</span>
+        </div>
+        <div class="dcard-bar-bg"><div class="dcard-bar" style="width:${pct}%;background:${d.color}"></div></div>
+        <div class="dcard-progress"><span>${d.done}/${d.total} mastered</span><span style="color:${d.color}">${pct}%</span></div>
+        <button class="start-btn" style="background:${d.color};color:${d.color==='#FFD600'?'#111':'#fff'}">
+          ${d.done===d.total?'🔁 Review Again':'▶ Start Drill'}
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── GAME ──
+function startDeck(id){
+  currentDeck=DECKS.find(d=>d.id===id);
+  cardIdx=0;sessionXp=0;combo=1;history=[];bestCombo=1;isFlipped=false;
+  document.getElementById('sessionXp').textContent='0';
+  document.getElementById('hudDeckName').textContent=`${currentDeck.prov} — ${currentDeck.name}`;
+  updateCombo();
+  buildDots();
+  loadCard();
+  goScreen('sGame');
+}
+
+function buildDots(){
+  const el=document.getElementById('progDots');
+  el.innerHTML=currentDeck.cards.map((_,i)=>`<div class="pdot${i===0?' active':''}" id="dot${i}"></div>`).join('');
+}
+
+function loadCard(){
+  const c=currentDeck.cards[cardIdx];
+  document.getElementById('fCat').textContent=c.cat;
+  document.getElementById('fWord').textContent=c.vn;
+  document.getElementById('fTone').innerHTML=`🎵 ${c.tone}`;
+  document.getElementById('bEn').textContent=c.en;
+  document.getElementById('bIpa').textContent=c.ipa;
+  document.getElementById('bEx').innerHTML=c.ex+` — (${c.en})`;
+  document.getElementById('progCount').textContent=`${cardIdx+1} / ${currentDeck.cards.length}`;
+  updateRatingXpLabels();
+  hideRatings();
+  isFlipped=false;
+  const ci=document.getElementById('cardInner');
+  ci.classList.remove('flipped','shake','correct-flash','wrong-flash');
+}
+
+function flipCard(){
+  if(isFlipped) return;
+  isFlipped=true;
+  document.getElementById('cardInner').classList.add('flipped');
+  setTimeout(showRatings,300);
+}
+
+function showRatings(){document.getElementById('ratings').classList.add('visible')}
+function hideRatings(){document.getElementById('ratings').classList.remove('visible')}
+
+function updateRatingXpLabels(){
+  const gxp=10*combo,exXp=15*combo;
+  document.getElementById('rGoodXp').textContent=`+${gxp} XP`;
+  document.getElementById('rEasyXp').textContent=`+${exXp} XP`;
+}
+
+function updateCombo(){
+  const badge=document.getElementById('comboBadge');
+  document.getElementById('comboNum').textContent=`×${combo}`;
+  badge.className='combo-badge'+(combo>=3?' hot':combo>=2?' ':' cold');
+  updateRatingXpLabels();
+}
+
+const XP_MAP={again:0,hard:5,good:10,easy:15};
+const RATING_LABELS={again:{label:'Again',col:'#DC2626',bg:'#FEE2E2'},hard:{label:'Hard',col:getComputedStyle(document.documentElement).getPropertyValue('--p').trim()||'#FF7A2F',bg:'#FFF0E8'},good:{label:'Good',col:'#16A34A',bg:'#dcfce7'},easy:{label:'Easy!',col:'#00D4FF',bg:'#e0f8ff'}};
+
+function rate(r){
+  if(!isFlipped) return;
+  const xpBase=XP_MAP[r];
+  const xpGained=r==='again'?0:xpBase*combo;
+  sessionXp+=xpGained;totalXp+=xpGained;
+  document.getElementById('sessionXp').textContent=sessionXp;
+  document.getElementById('navXp').textContent=totalXp+' XP';
+
+  const card=currentDeck.cards[cardIdx];
+  history.push({card,rating:r,xp:xpGained});
+
+  // combo logic
+  if(r==='good'||r==='easy'){
+    combo=Math.min(combo+1,4);
+    if(combo>bestCombo) bestCombo=combo;
+    spawnXpPop('+'+xpGained+' XP',r==='easy'?'#00D4FF':'#16A34A');
+    flashCard('correct');
+  } else if(r==='hard'){
+    combo=Math.max(combo-1,1);
+    spawnXpPop('+'+xpGained+' XP','#FF7A2F');
+    flashCard('correct');
+  } else {
+    combo=1;
+    spawnXpPop('Again!','#DC2626');
+    document.getElementById('cardInner').classList.add('shake');
+    flashCard('wrong');
+  }
+  updateCombo();
+
+  // dot
+  const dot=document.getElementById('dot'+cardIdx);
+  if(dot){
+    dot.classList.remove('active');
+    dot.classList.add(r==='again'?'wrong':'correct');
+  }
+
+  cardIdx++;
+  if(cardIdx>=currentDeck.cards.length){
+    setTimeout(showResults,500);
+  } else {
+    setTimeout(()=>{
+      loadCard();
+      const nextDot=document.getElementById('dot'+cardIdx);
+      if(nextDot) nextDot.classList.add('active');
+    },350);
+  }
+}
+
+function flashCard(type){
+  const ci=document.getElementById('cardInner');
+  ci.classList.add(type+'-flash');
+  setTimeout(()=>ci.classList.remove(type+'-flash'),400);
+}
+
+function spawnXpPop(text,color){
+  const el=document.createElement('div');
+  el.className='xp-pop';
+  el.style.cssText=`color:${color};left:${40+Math.random()*20}%;top:${40+Math.random()*10}%;font-size:${20+Math.random()*10}px`;
+  el.textContent=text;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),1000);
+}
+
+// ── RESULTS ──
+function showResults(){
+  const correct=history.filter(h=>h.rating!=='again').length;
+  const accuracy=Math.round(correct/history.length*100);
+
+  document.getElementById('resXpBig').textContent='+'+sessionXp;
+  document.getElementById('resXpSub').textContent=`Total: ${totalXp} XP · Level 5 · ${Math.max(0,1000-totalXp)} to next level`;
+  document.getElementById('resCorrect').textContent=correct;
+  document.getElementById('resAccuracy').textContent=accuracy+'%';
+  document.getElementById('resBestCombo').textContent='×'+bestCombo;
+
+  const emojiMap={100:'🏆',80:'🎉',60:'💪',40:'😤',0:'😅'};
+  const ek=Object.keys(emojiMap).reverse().find(k=>accuracy>=parseInt(k));
+  document.getElementById('resEmoji').textContent=emojiMap[ek]||'😅';
+  document.getElementById('resTitle').textContent=accuracy===100?'Perfect Score!':accuracy>=80?'Great Session!':accuracy>=60?'Good Work!':'Keep Drilling!';
+  document.getElementById('resSub').textContent=`${correct} of ${history.length} correct · ${accuracy}% accuracy`;
+
+  const ratingStyles={again:{bg:'#FEE2E2',col:'#DC2626',label:'Again'},hard:{bg:'#FFF0E8',col:'#FF7A2F',label:'Hard'},good:{bg:'#DCFCE7',col:'#16A34A',label:'Good'},easy:{bg:'#e0f8ff',col:'#00D4FF',label:'Easy!'}};
+  document.getElementById('bkList').innerHTML=history.map(h=>{
+    const rs=ratingStyles[h.rating];
+    return `<div class="bk-row">
+      <div class="bk-word">${h.card.vn}</div>
+      <div class="bk-en">${h.card.en}</div>
+      <span class="bk-rating" style="background:${rs.bg};color:${rs.col}">${rs.label}</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--p);font-weight:700;min-width:40px;text-align:right">${h.xp>0?'+'+h.xp:'—'}</span>
+    </div>`;
+  }).join('');
+
+  goScreen('sResults');
+  if(accuracy>=80) spawnConfetti();
+}
+
+function spawnConfetti(){
+  const colors=['#FF7A2F','#FFD600','#00D4FF','#16A34A','#111827'];
+  for(let i=0;i<40;i++){
+    const el=document.createElement('div');
+    el.className='confetto';
+    el.style.cssText=`left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};animation-delay:${Math.random()*.8}s;animation-duration:${1.5+Math.random()}s;width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;border-radius:${Math.random()>0.5?'50%':'2px'}`;
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),2500);
+  }
+}
+
+function restartGame(){if(currentDeck) startDeck(currentDeck.id)}
+
+// keyboard
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('sGame').classList.contains('active')) return;
+  if(e.code==='Space'){e.preventDefault();flipCard()}
+  if(e.key==='1') rate('again');
+  if(e.key==='2') rate('hard');
+  if(e.key==='3') rate('good');
+  if(e.key==='4') rate('easy');
+});
+
+// filter buttons
+document.querySelectorAll('.df-btn').forEach(b=>b.addEventListener('click',function(){
+  document.querySelectorAll('.df-btn').forEach(x=>x.classList.remove('active'));
+  this.classList.add('active');
+}));
+
+renderDecks();
+</script>
